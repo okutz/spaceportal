@@ -1,0 +1,1283 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY DOLCE-Lite "http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#" >
+    <!ENTITY PhysicalEntity "http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#"
+     xml:base="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:DOLCE-Lite="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:PhysicalEntity="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment xml:lang="en"
+            >An ontology of concrete spatial objects for indoor environments, based on DOLCE-Lite, for the application of ambient environments and assisted living.</rdfs:comment>
+        <owl:imports rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#containedIn -->
+
+    <owl:ObjectProperty rdf:about="#containedIn">
+        <rdfs:comment xml:lang="en"
+            >A physical entity that is contained in a physical room.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&DOLCE-Lite;generic-location"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#PhysicalRoom"/>
+                    <rdf:Description rdf:about="#SpatialEntity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#PhysicalBuilding"/>
+                    <rdf:Description rdf:about="#PhysicalRoom"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#contains -->
+
+    <owl:ObjectProperty rdf:about="#contains">
+        <rdfs:comment xml:lang="en"
+            >A physical room contains physical entities.</rdfs:comment>
+        <owl:inverseOf rdf:resource="#containedIn"/>
+        <rdfs:subPropertyOf rdf:resource="&DOLCE-Lite;generic-location-of"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#PhysicalRoom"/>
+                    <rdf:Description rdf:about="#SpatialEntity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#PhysicalBuilding"/>
+                    <rdf:Description rdf:about="#PhysicalRoom"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#abstract-location -->
+
+    <owl:ObjectProperty rdf:about="&DOLCE-Lite;abstract-location"/>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#generic-location -->
+
+    <owl:ObjectProperty rdf:about="&DOLCE-Lite;generic-location">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >The most generic location relation, probably equivalent to more than one 
+    image schema in a cognitive system (e.g. containment for exact location, 
+    proximity for approximate location).This is meant to reason on 
+    generalized, common sense as well as formal locations, including naive 
+    localization, between any kinds of entities. Generic location is branched 
+    into &#39;exact&#39; location, ranging on regions, and &#39;approximate&#39; (naive) 
+    location, ranging on non-regions.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#generic-location-of -->
+
+    <owl:ObjectProperty rdf:about="&DOLCE-Lite;generic-location-of"/>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#generically-dependent-on -->
+
+    <owl:ObjectProperty rdf:about="&DOLCE-Lite;generically-dependent-on"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Airport -->
+
+    <owl:Class rdf:about="#Airport">
+        <rdfs:subClassOf rdf:resource="#TransportationBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#ApartmentBuilding -->
+
+    <owl:Class rdf:about="#ApartmentBuilding">
+        <rdfs:subClassOf rdf:resource="#BuildingType"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for apartment facilities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#ApplianceEntity -->
+
+    <owl:Class rdf:about="#ApplianceEntity">
+        <rdfs:subClassOf rdf:resource="#SpatialEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Armchair -->
+
+    <owl:Class rdf:about="#Armchair">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#ArtGallery -->
+
+    <owl:Class rdf:about="#ArtGallery">
+        <rdfs:subClassOf rdf:resource="#CulturalBuilding"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for art facilities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Bank -->
+
+    <owl:Class rdf:about="#Bank">
+        <rdfs:subClassOf rdf:resource="#ServiceBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Bar -->
+
+    <owl:Class rdf:about="#Bar">
+        <rdfs:subClassOf rdf:resource="#ServiceBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Bathroom -->
+
+    <owl:Class rdf:about="#Bathroom">
+        <rdfs:subClassOf rdf:resource="#ResidentialRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type for bathing events or bathroom functionalities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Bathtub -->
+
+    <owl:Class rdf:about="#Bathtub">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Bed -->
+
+    <owl:Class rdf:about="#Bed">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#BedRoom -->
+
+    <owl:Class rdf:about="#BedRoom">
+        <rdfs:subClassOf rdf:resource="#ResidentialRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type for bed rooms that provide sleeping functionalities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Bin -->
+
+    <owl:Class rdf:about="#Bin">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Blender -->
+
+    <owl:Class rdf:about="#Blender">
+        <rdfs:subClassOf rdf:resource="#ApplianceEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Board -->
+
+    <owl:Class rdf:about="#Board">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Briefcase -->
+
+    <owl:Class rdf:about="#Briefcase">
+        <rdfs:subClassOf rdf:resource="#OfficeSupplyEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#BuildingConstruct -->
+
+    <owl:Class rdf:about="#BuildingConstruct">
+        <rdfs:subClassOf rdf:resource="#BuildingEntity"/>
+        <rdfs:comment xml:lang="en"
+            >BuildingConstruct entities specify constructional parts of a PhysicalBuilding.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#BuildingEntity -->
+
+    <owl:Class rdf:about="#BuildingEntity">
+        <rdfs:subClassOf rdf:resource="#PhysicalEntity"/>
+        <rdfs:comment xml:lang="en"
+            >Instances BuildingEntity define parts of PhysicalBuilding instances. The category is divided into constructional entities (BuildingConstruct) and structural entities (ConnectingRegion).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#BuildingType -->
+
+    <owl:Class rdf:about="#BuildingType">
+        <rdfs:subClassOf rdf:resource="&DOLCE-Lite;non-physical-endurant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&DOLCE-Lite;generically-dependent-on"/>
+                <owl:allValuesFrom rdf:resource="#PhysicalBuilding"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en"
+            >Building types describe functions of physical rooms, e.g. castle, residential building, etc. Instances of building types depend on physical buildings.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Cabinet -->
+
+    <owl:Class rdf:about="#Cabinet">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Cable -->
+
+    <owl:Class rdf:about="#Cable">
+        <rdfs:subClassOf rdf:resource="#EquipmentEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Caretaker -->
+
+    <owl:Class rdf:about="#Caretaker">
+        <rdfs:subClassOf rdf:resource="#User"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Castle -->
+
+    <owl:Class rdf:about="#Castle">
+        <rdfs:subClassOf rdf:resource="#BuildingType"/>
+        <rdfs:comment xml:lang="en"
+            >A building type with appropriate space.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Ceiling -->
+
+    <owl:Class rdf:about="#Ceiling">
+        <rdfs:subClassOf rdf:resource="#BuildingConstruct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Chair -->
+
+    <owl:Class rdf:about="#Chair">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Church -->
+
+    <owl:Class rdf:about="#Church">
+        <rdfs:subClassOf rdf:resource="#ReligiousBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Closet -->
+
+    <owl:Class rdf:about="#Closet">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Color -->
+
+    <owl:Class rdf:about="#Color">
+        <rdfs:subClassOf rdf:resource="&DOLCE-Lite;physical-quality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Column -->
+
+    <owl:Class rdf:about="#Column">
+        <rdfs:subClassOf rdf:resource="#BuildingConstruct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#ConferenceHall -->
+
+    <owl:Class rdf:about="#ConferenceHall">
+        <rdfs:subClassOf rdf:resource="#PublicRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides conference functionalities, e.g., by sufficiently enough space for conference attendees.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#ConnectingRegion -->
+
+    <owl:Class rdf:about="#ConnectingRegion">
+        <rdfs:subClassOf rdf:resource="#BuildingEntity"/>
+        <rdfs:comment xml:lang="en"
+            >ConnectingRegion entities specify structural parts of a PhysicalBuilding.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#CopyMachine -->
+
+    <owl:Class rdf:about="#CopyMachine">
+        <rdfs:subClassOf rdf:resource="#EquipmentEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#CopyRoom -->
+
+    <owl:Class rdf:about="#CopyRoom">
+        <rdfs:subClassOf rdf:resource="#EquipmentRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides copy functionalities, e.g., by physical rooms that contain copy machines.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Corridor -->
+
+    <owl:Class rdf:about="#Corridor">
+        <rdfs:subClassOf rdf:resource="#ConnectingRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#CulturalBuilding -->
+
+    <owl:Class rdf:about="#CulturalBuilding">
+        <rdfs:subClassOf rdf:resource="#BuildingType"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for cultural facilities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#DarkRoom -->
+
+    <owl:Class rdf:about="#DarkRoom">
+        <rdfs:subClassOf rdf:resource="#EquipmentRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides dark room or photography functionalities, e.g., by physical rooms that have special forms of light.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Desk -->
+
+    <owl:Class rdf:about="#Desk">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#DesktopPC -->
+
+    <owl:Class rdf:about="#DesktopPC">
+        <rdfs:subClassOf rdf:resource="#EquipmentEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#DiningRoom -->
+
+    <owl:Class rdf:about="#DiningRoom">
+        <rdfs:subClassOf rdf:resource="#ResidentialRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type for dining events or dining functionalities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Dishwasher -->
+
+    <owl:Class rdf:about="#Dishwasher">
+        <rdfs:subClassOf rdf:resource="#ApplianceEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Door -->
+
+    <owl:Class rdf:about="#Door">
+        <rdfs:subClassOf rdf:resource="#BuildingConstruct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Doorway -->
+
+    <owl:Class rdf:about="#Doorway">
+        <rdfs:subClassOf rdf:resource="#ConnectingRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#EducationBuilding -->
+
+    <owl:Class rdf:about="#EducationBuilding">
+        <rdfs:subClassOf rdf:resource="#BuildingType"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for educational facilities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#ElevatorArea -->
+
+    <owl:Class rdf:about="#ElevatorArea">
+        <rdfs:subClassOf rdf:resource="#ConnectingRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#ElevatorShaft -->
+
+    <owl:Class rdf:about="#ElevatorShaft">
+        <rdfs:subClassOf rdf:resource="#ConnectingRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#EquipmentEntity -->
+
+    <owl:Class rdf:about="#EquipmentEntity">
+        <rdfs:subClassOf rdf:resource="#SpatialEntity"/>
+        <rdfs:comment xml:lang="en"
+            >some electronic devices in offices</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#EquipmentRoom -->
+
+    <owl:Class rdf:about="#EquipmentRoom">
+        <rdfs:subClassOf rdf:resource="#RoomType"/>
+        <rdfs:comment xml:lang="en"
+            >Room types that provide facilities for which certain equipment is needed.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Extinguisher -->
+
+    <owl:Class rdf:about="#Extinguisher">
+        <rdfs:subClassOf rdf:resource="#ApplianceEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Factory -->
+
+    <owl:Class rdf:about="#Factory">
+        <rdfs:subClassOf rdf:resource="#ServiceBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#FoldingDoor -->
+
+    <owl:Class rdf:about="#FoldingDoor">
+        <rdfs:subClassOf rdf:resource="#Door"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#FurnitureEntity -->
+
+    <owl:Class rdf:about="#FurnitureEntity">
+        <rdfs:subClassOf rdf:resource="#SpatialEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#GovernmentBuilding -->
+
+    <owl:Class rdf:about="#GovernmentBuilding">
+        <rdfs:subClassOf rdf:resource="#ServiceBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Harbor -->
+
+    <owl:Class rdf:about="#Harbor">
+        <rdfs:subClassOf rdf:resource="#TransportationBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#HolePuncher -->
+
+    <owl:Class rdf:about="#HolePuncher">
+        <rdfs:subClassOf rdf:resource="#OfficeSupplyEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Hotel -->
+
+    <owl:Class rdf:about="#Hotel">
+        <rdfs:subClassOf rdf:resource="#ServiceBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#House -->
+
+    <owl:Class rdf:about="#House">
+        <rdfs:subClassOf rdf:resource="#BuildingType"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for stand-alone houses of arbitrary type.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Junction -->
+
+    <owl:Class rdf:about="#Junction">
+        <rdfs:subClassOf rdf:resource="#ConnectingRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Keyboard -->
+
+    <owl:Class rdf:about="#Keyboard">
+        <rdfs:subClassOf rdf:resource="#EquipmentEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Kitchen -->
+
+    <owl:Class rdf:about="#Kitchen">
+        <rdfs:subClassOf rdf:resource="#ResidentialRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type for cooking events or food preparation functionalities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Laboratory -->
+
+    <owl:Class rdf:about="#Laboratory">
+        <rdfs:subClassOf rdf:resource="#EquipmentRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides laboratory functionalities, e.g., by physical rooms that contain certain laboratory equipment.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Lamp -->
+
+    <owl:Class rdf:about="#Lamp">
+        <rdfs:subClassOf rdf:resource="#EquipmentEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Laptop -->
+
+    <owl:Class rdf:about="#Laptop">
+        <rdfs:subClassOf rdf:resource="#EquipmentEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#LectureHall -->
+
+    <owl:Class rdf:about="#LectureHall">
+        <rdfs:subClassOf rdf:resource="#PublicRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides lecture functionalities, e.g., by sufficiently enough space for teaching.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Library -->
+
+    <owl:Class rdf:about="#Library">
+        <rdfs:subClassOf rdf:resource="#CulturalBuilding"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for library facilities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#LibraryRoom -->
+
+    <owl:Class rdf:about="#LibraryRoom">
+        <rdfs:subClassOf rdf:resource="#RoomType"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides library functionalities, e.g., by physical rooms that contain books and documents.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#LivingRoom -->
+
+    <owl:Class rdf:about="#LivingRoom">
+        <rdfs:subClassOf rdf:resource="#ResidentialRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type for living room events, social interaction, or resting.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Lobby -->
+
+    <owl:Class rdf:about="#Lobby">
+        <rdfs:subClassOf rdf:resource="#PublicRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides lobby functionalities, e.g., by room types that are entrance areas of buildings with sufficiently enough space for visitors.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Market -->
+
+    <owl:Class rdf:about="#Market">
+        <rdfs:subClassOf rdf:resource="#ServiceBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Material -->
+
+    <owl:Class rdf:about="#Material">
+        <rdfs:subClassOf rdf:resource="&DOLCE-Lite;physical-quality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#MeetingRoom -->
+
+    <owl:Class rdf:about="#MeetingRoom">
+        <rdfs:subClassOf rdf:resource="#EquipmentRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides meeting functionalities, e.g., by physical rooms that contain a seating or standing environment for people.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Microwave -->
+
+    <owl:Class rdf:about="#Microwave">
+        <rdfs:subClassOf rdf:resource="#ApplianceEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Mosque -->
+
+    <owl:Class rdf:about="#Mosque">
+        <rdfs:subClassOf rdf:resource="#ReligiousBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Mouse -->
+
+    <owl:Class rdf:about="#Mouse">
+        <rdfs:subClassOf rdf:resource="#EquipmentEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Museum -->
+
+    <owl:Class rdf:about="#Museum">
+        <rdfs:subClassOf rdf:resource="#CulturalBuilding"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for museum facilities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Office -->
+
+    <owl:Class rdf:about="#Office">
+        <rdfs:subClassOf rdf:resource="#EquipmentRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides office functionalities, e.g., by physical rooms that provide a work environment.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#OfficeBuilding -->
+
+    <owl:Class rdf:about="#OfficeBuilding">
+        <rdfs:subClassOf rdf:resource="#ServiceBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#OfficeSupplyEntity -->
+
+    <owl:Class rdf:about="#OfficeSupplyEntity">
+        <rdfs:subClassOf rdf:resource="#SpatialEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Pen -->
+
+    <owl:Class rdf:about="#Pen">
+        <rdfs:subClassOf rdf:resource="#OfficeSupplyEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Phone -->
+
+    <owl:Class rdf:about="#Phone">
+        <rdfs:subClassOf rdf:resource="#EquipmentEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#PhysicalBuilding -->
+
+    <owl:Class rdf:about="#PhysicalBuilding">
+        <rdfs:subClassOf rdf:resource="&DOLCE-Lite;physical-object"/>
+        <owl:disjointWith rdf:resource="#PhysicalEntity"/>
+        <owl:disjointWith rdf:resource="#PhysicalRoom"/>
+        <owl:disjointWith rdf:resource="#User"/>
+        <rdfs:comment xml:lang="en"
+            >Physical buildings are defined by some physical boundaries (BuildingEntity objects). They can play the role of a building function (office buildinbg, factory, etc.). Physical buildings may contain physical rooms.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#PhysicalEntity -->
+
+    <owl:Class rdf:about="#PhysicalEntity">
+        <rdfs:subClassOf rdf:resource="&DOLCE-Lite;physical-object"/>
+        <owl:disjointWith rdf:resource="#PhysicalRoom"/>
+        <owl:disjointWith rdf:resource="#User"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#PhysicalRoom -->
+
+    <owl:Class rdf:about="#PhysicalRoom">
+        <rdfs:subClassOf rdf:resource="&DOLCE-Lite;physical-object"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#containedIn"/>
+                <owl:onClass rdf:resource="#PhysicalBuilding"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#User"/>
+        <rdfs:comment xml:lang="en"
+            >Physical rooms are defined by some physical boundaries, e.g. walls. They can play the role of a room function (kitchen, lab, etc.). Physical rooms contain physical entities. Instances of room types depend on instances of physical rooms.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Plant -->
+
+    <owl:Class rdf:about="#Plant">
+        <rdfs:subClassOf rdf:resource="#SpatialEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#PublicRoom -->
+
+    <owl:Class rdf:about="#PublicRoom">
+        <rdfs:subClassOf rdf:resource="#RoomType"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides functionalities available to or accessible by the public.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Rack -->
+
+    <owl:Class rdf:about="#Rack">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Refrigerator -->
+
+    <owl:Class rdf:about="#Refrigerator">
+        <rdfs:subClassOf rdf:resource="#ApplianceEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#ReligiousBuilding -->
+
+    <owl:Class rdf:about="#ReligiousBuilding">
+        <rdfs:subClassOf rdf:resource="#BuildingType"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for religious facilities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Resident -->
+
+    <owl:Class rdf:about="#Resident">
+        <rdfs:subClassOf rdf:resource="#User"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#ResidentialBuilding -->
+
+    <owl:Class rdf:about="#ResidentialBuilding">
+        <rdfs:subClassOf rdf:resource="#BuildingType"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for residential facilities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#ResidentialRoom -->
+
+    <owl:Class rdf:about="#ResidentialRoom">
+        <rdfs:subClassOf rdf:resource="#RoomType"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides residential functionalities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Restroom -->
+
+    <owl:Class rdf:about="#Restroom">
+        <rdfs:subClassOf rdf:resource="#PublicRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides bathroom functionalities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#RevolvingDoor -->
+
+    <owl:Class rdf:about="#RevolvingDoor">
+        <rdfs:subClassOf rdf:resource="#Door"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#RoomType -->
+
+    <owl:Class rdf:about="#RoomType">
+        <rdfs:subClassOf rdf:resource="&DOLCE-Lite;non-physical-endurant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&DOLCE-Lite;generically-dependent-on"/>
+                <owl:allValuesFrom rdf:resource="#PhysicalRoom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&DOLCE-Lite;abstract-location"/>
+                <owl:allValuesFrom rdf:resource="#BuildingType"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en"
+            >Room types describe functions of physical rooms, e.g. kitchen, lab, etc. Instances of room types depend on physical rooms.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Salesroom -->
+
+    <owl:Class rdf:about="#Salesroom">
+        <rdfs:subClassOf rdf:resource="#PublicRoom"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides sales functionalities, e.g., by physical rooms that are part of stores or malls.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#SchoolBuilding -->
+
+    <owl:Class rdf:about="#SchoolBuilding">
+        <rdfs:subClassOf rdf:resource="#EducationBuilding"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for schools.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#ServiceBuilding -->
+
+    <owl:Class rdf:about="#ServiceBuilding">
+        <rdfs:subClassOf rdf:resource="#BuildingType"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for service facilities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Shape -->
+
+    <owl:Class rdf:about="#Shape">
+        <rdfs:subClassOf rdf:resource="&DOLCE-Lite;physical-quality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Sharpener -->
+
+    <owl:Class rdf:about="#Sharpener">
+        <rdfs:subClassOf rdf:resource="#OfficeSupplyEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Shelf -->
+
+    <owl:Class rdf:about="#Shelf">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Sink -->
+
+    <owl:Class rdf:about="#Sink">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#SlidingDoor -->
+
+    <owl:Class rdf:about="#SlidingDoor">
+        <rdfs:subClassOf rdf:resource="#Door"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Sofa -->
+
+    <owl:Class rdf:about="#Sofa">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#SpatialEntity -->
+
+    <owl:Class rdf:about="#SpatialEntity">
+        <rdfs:subClassOf rdf:resource="#PhysicalEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#containedIn"/>
+                <owl:allValuesFrom rdf:resource="#PhysicalRoom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#containedIn"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en"
+            >Physical entities are defined by properties the agent perceives, e.g. specific eye movements. A physical entities is contained in exactly one physical room.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Staircase -->
+
+    <owl:Class rdf:about="#Staircase">
+        <rdfs:subClassOf rdf:resource="#ConnectingRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Stapler -->
+
+    <owl:Class rdf:about="#Stapler">
+        <rdfs:subClassOf rdf:resource="#OfficeSupplyEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Station -->
+
+    <owl:Class rdf:about="#Station">
+        <rdfs:subClassOf rdf:resource="#TransportationBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#StorageRoom -->
+
+    <owl:Class rdf:about="#StorageRoom">
+        <rdfs:subClassOf rdf:resource="#RoomType"/>
+        <rdfs:comment xml:lang="en"
+            >A room type that provides storage space for physical entities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#SwingDoor -->
+
+    <owl:Class rdf:about="#SwingDoor">
+        <rdfs:subClassOf rdf:resource="#Door"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Synagogue -->
+
+    <owl:Class rdf:about="#Synagogue">
+        <rdfs:subClassOf rdf:resource="#ReligiousBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Table -->
+
+    <owl:Class rdf:about="#Table">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Temperature -->
+
+    <owl:Class rdf:about="#Temperature">
+        <rdfs:subClassOf rdf:resource="&DOLCE-Lite;physical-quality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Temple -->
+
+    <owl:Class rdf:about="#Temple">
+        <rdfs:subClassOf rdf:resource="#ReligiousBuilding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Theater -->
+
+    <owl:Class rdf:about="#Theater">
+        <rdfs:subClassOf rdf:resource="#CulturalBuilding"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for theater facilities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Toilet -->
+
+    <owl:Class rdf:about="#Toilet">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#TransportationBuilding -->
+
+    <owl:Class rdf:about="#TransportationBuilding">
+        <rdfs:subClassOf rdf:resource="#BuildingType"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for transportation facilities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#UniversityBuilding -->
+
+    <owl:Class rdf:about="#UniversityBuilding">
+        <rdfs:subClassOf rdf:resource="#EducationBuilding"/>
+        <rdfs:comment xml:lang="en"
+            >A building type for universities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#User -->
+
+    <owl:Class rdf:about="#User">
+        <rdfs:subClassOf rdf:resource="&DOLCE-Lite;physical-object"/>
+        <rdfs:comment xml:lang="en"
+            >Users that can be part of physical buildings.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#VacuumCleaner -->
+
+    <owl:Class rdf:about="#VacuumCleaner">
+        <rdfs:subClassOf rdf:resource="#ApplianceEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Vase -->
+
+    <owl:Class rdf:about="#Vase">
+        <rdfs:subClassOf rdf:resource="#FurnitureEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#VendingMachine -->
+
+    <owl:Class rdf:about="#VendingMachine">
+        <rdfs:subClassOf rdf:resource="#ApplianceEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Visitor -->
+
+    <owl:Class rdf:about="#Visitor">
+        <rdfs:subClassOf rdf:resource="#User"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Wall -->
+
+    <owl:Class rdf:about="#Wall">
+        <rdfs:subClassOf rdf:resource="#BuildingConstruct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#WashingMachine -->
+
+    <owl:Class rdf:about="#WashingMachine">
+        <rdfs:subClassOf rdf:resource="#ApplianceEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/PhysicalEntity.owl#Window -->
+
+    <owl:Class rdf:about="#Window">
+        <rdfs:subClassOf rdf:resource="#BuildingConstruct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#non-physical-endurant -->
+
+    <owl:Class rdf:about="&DOLCE-Lite;non-physical-endurant"/>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-object -->
+
+    <owl:Class rdf:about="&DOLCE-Lite;physical-object"/>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-quality -->
+
+    <owl:Class rdf:about="&DOLCE-Lite;physical-quality"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+

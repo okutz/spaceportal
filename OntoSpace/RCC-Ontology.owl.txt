@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.ontospace.uni-bremen.de/ontology/modSpace/RCC-Ontology.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.ontospace.uni-bremen.de/ontology/modSpace/RCC-Ontology.owl">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >version 1.0, Jan 2009; adapted from webgis.wsl.ch</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Project: I1-[OntoSpace], www.ontospace.uni-bremen.de</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >General Ontology, containing  abstract RCC-8 relations.</rdfs:comment>
+  </owl:Ontology>
+  <owl:ObjectProperty rdf:ID="inverseProperPartOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="properPartOf"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:ID="overlapsNotEqual"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="tangentialProperPartOf">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#properPartOf"/>
+    </rdfs:subPropertyOf>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="inverseTangentialProperPartOf"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#properPartOf">
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:about="#overlapsNotEqual"/>
+    </rdfs:subPropertyOf>
+    <owl:inverseOf rdf:resource="#inverseProperPartOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="nonTangentialProperPartOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="inverseNonTangentialProperPartOf"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf rdf:resource="#properPartOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#inverseTangentialProperPartOf">
+    <owl:inverseOf rdf:resource="#tangentialProperPartOf"/>
+    <rdfs:subPropertyOf rdf:resource="#inverseProperPartOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#inverseNonTangentialProperPartOf">
+    <owl:inverseOf rdf:resource="#nonTangentialProperPartOf"/>
+    <rdfs:subPropertyOf rdf:resource="#inverseProperPartOf"/>
+  </owl:ObjectProperty>
+  <owl:SymmetricProperty rdf:ID="equalTo">
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:ID="overlaps"/>
+    </rdfs:subPropertyOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:ID="externallyConnectedTo">
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:ID="connectsWith"/>
+    </rdfs:subPropertyOf>
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:ID="discreteFrom"/>
+    </rdfs:subPropertyOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >RCC-8: externally connected</rdfs:comment>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:about="#discreteFrom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:ID="spatiallyRelated"/>
+    </rdfs:subPropertyOf>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:about="#connectsWith">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:about="#spatiallyRelated"/>
+    </rdfs:subPropertyOf>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:ID="partiallyOverlaps">
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:about="#overlapsNotEqual"/>
+    </rdfs:subPropertyOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:ID="disconnectedFrom">
+    <rdfs:subPropertyOf rdf:resource="#discreteFrom"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:about="#spatiallyRelated">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:about="#overlapsNotEqual">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:about="#overlaps"/>
+    </rdfs:subPropertyOf>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:about="#overlaps">
+    <rdfs:subPropertyOf rdf:resource="#connectsWith"/>
+    <rdfs:subPropertyOf rdf:resource="#spatiallyRelated"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:SymmetricProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->
