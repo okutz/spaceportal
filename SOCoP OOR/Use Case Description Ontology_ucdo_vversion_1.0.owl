@@ -1,0 +1,412 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns="http://www.ccs.neu.edu/home/kenb/ontologies/ucdo#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xml:base="http://www.ccs.neu.edu/home/kenb/ontologies/ucdo#"
+>
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">version 1.0</owl:versionInfo>
+    <rdfs:comment xml:lang="en"
+    >Use Case Description Ontology (UCDO). Use cases are a commonly used technique for specifying
+     the functional requirements of a project. This ontology is concerned with the formal
+     representation of the flow of events that occurs in a use case, including alternative
+     flows and exceptional flows. Nonfunctional requirements are specified separately.
+    </rdfs:comment>
+    <owl:versionInfo>$Date: 2010/03/14 14:20:10 $</owl:versionInfo>
+    <dc:creator>Kenneth Baclawski</dc:creator>
+  </owl:Ontology>
+
+  <!-- Classes -->
+
+  <owl:Class rdf:ID="Participant">
+    <rdfs:comment xml:lang="en"
+    >An entity that participates in a use case. A participant can be a system or an actor.
+     An actor can be a system. What matters is the role being played by the particpant.
+     Each participant has a name that uniquely determines it. 
+    </rdfs:comment>
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#System"/>
+      <owl:Class rdf:about="#Actor"/>
+    </owl:unionOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#name"/>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:hasKey rdf:parseType="Collection">
+      <owl:ObjectProperty rdf:about="#name"/>
+    </owl:hasKey>
+  </owl:Class>
+
+  <owl:Class rdf:ID="System">
+    <rdfs:comment xml:lang="en"
+    >A system whose functional requirements are being with use cases.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Participant"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Actor">
+    <rdfs:comment xml:lang="en"
+    >A role played by an entity that is interacting with the system.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Participant"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Flow">
+    <rdfs:comment xml:lang="en"
+    >A sequence of steps representing an interaction of actors with a system.
+    </rdfs:comment>
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#UseCase"/>
+      <owl:Class rdf:about="#Alternative"/>
+    </owl:unionOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#first"/>
+        <owl:someValuesFrom rdf:resource="#Step"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="UseCase">
+    <rdfs:comment xml:lang="en"
+    >A description of system behavior as it responds to a request. Each use case
+     specifies a functional requirment of exactly one system. A use case has a
+     name that uniquely determines it within the use cases of its system.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Flow"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#system"/>
+        <owl:someValuesFrom rdf:resource="#System"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#name"/>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:hasKey rdf:parseType="Collection">
+      <owl:ObjectProperty rdf:about="#name"/>
+      <owl:ObjectProperty rdf:about="#system"/>
+    </owl:hasKey>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Alternative">
+    <rdfs:comment xml:lang="en"
+    >An alternative flow of events in a use case.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Flow"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#startsAfter"/>
+        <owl:someValuesFrom rdf:resource="#Step"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Condition">
+    <rdfs:comment xml:lang="en"
+    >A boolean expression use for specifying preconditions, postconditions, alternative conditions and exceptional conditions.
+    </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#specification"/>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Step">
+    <rdfs:comment xml:lang="en"
+    >One interaction event in a flow.
+    </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#stepInitiator"/>
+        <owl:someValuesFrom rdf:resource="#Participant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#specification"/>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <!-- Associations -->
+
+  <owl:ObjectProperty rdf:ID="useCase">
+    <rdfs:comment xml:lang="en"
+    >A use case of a system.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#System"/>
+    <rdfs:range rdf:resource="#UseCase"/>
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:ID="system">
+        <rdfs:comment xml:lang="en"
+        >The system being used by a use case.
+        </rdfs:comment>
+      </owl:FunctionalProperty>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="precondition">
+    <rdfs:comment xml:lang="en"
+    >A necessary condition for an event flow to occur. For a use case, the precondition
+     is a requirement for the system to be invoked. For an alternative flow or exception,
+     the precondition is both necessary and sufficient for the alternative or exception 
+     to be invoked.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#Flow"/>
+    <rdfs:range rdf:resource="#Condition"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="postcondition">
+    <rdfs:comment xml:lang="en"
+    >A condition that holds upon the successful completion of an event flow.
+     It is a boolean expression that evaluates to true when the flow completes normally.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#Flow"/>
+    <rdfs:range rdf:resource="#Condition"/>
+  </owl:ObjectProperty>
+
+  <owl:ReflexiveProperty rdf:ID="precedesOrEquals">
+    <rdfs:comment xml:lang="en"
+    >The reflexive transitive closure of the flow. This property allows one
+     to define a query that examines all of the steps of a flow.
+    </rdfs:comment>
+  </owl:ReflexiveProperty>
+  <owl:TransitiveProperty rdf:about="precedesOrEquals"/>
+
+  <owl:FunctionalProperty rdf:ID="next">
+    <rdfs:comment xml:lang="en"
+    >The next step in a flow. The steps in a flow form a sequence.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#Step"/>
+    <rdfs:range rdf:resource="#Step"/>
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:ID="previous">
+        <rdfs:comment xml:lang="en"
+        >The previous step in a flow.
+        </rdfs:comment>
+      </owl:FunctionalProperty>
+    </owl:inverseOf>
+    <rdf:subPropertyOf rdf:resource="#precedesOrEquals"/>
+  </owl:FunctionalProperty>
+
+  <owl:ObjectProperty rdf:ID="stepInitiator">
+    <rdfs:comment xml:lang="en"
+    >The participant that initiates a step in a flow. The specification of a step
+     is a sentence that specifies the action that occurs during the step. The
+     subject of that sentence is the initiator of the step. It can be either an
+     actor or the system. If a step includes another use case, then its initiator
+     is the initiator of the included use case.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#Step"/>
+    <rdfs:range rdf:resource="#Participant"/>
+    <owl:propertyChainAxiom rdf:parseType="Collection">
+      <owl:FunctionalProperty rdf:about="#includes"/>
+      <owl:FunctionalProperty rdf:about="#initiator"/>
+    </owl:propertyChainAxiom>
+  </owl:ObjectProperty>
+
+  <owl:FunctionalProperty rdf:ID="first">
+    <rdfs:comment xml:lang="en"
+    >The first step in a flow. Every flow has exactly one first step.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#Flow"/>
+    <rdfs:range rdf:resource="#Step"/>
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:ID="starts">
+        <rdfs:comment xml:lang="en"
+        >The flow started by a step.
+        </rdfs:comment>
+      </owl:FunctionalProperty>
+    </owl:inverseOf>
+  </owl:FunctionalProperty>
+
+  <owl:TransitiveProperty rdf:ID="kindOf">
+    <rdfs:comment xml:lang="en"
+    >A subclass relationship among actors. This is the only relationship between
+     actors that is allowed.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#Actor"/>
+    <rdfs:range rdf:resource="#Actor"/>
+  </owl:TransitiveProperty>
+
+  <owl:FunctionalProperty rdf:ID="includes">
+    <rdfs:comment xml:lang="en"
+    >A use case that is included as a step of another use case. Since the step is
+     entirely specified by the included use case, the specification attribute serves
+     only to summarize the included use case flow.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#Step"/>
+    <rdfs:range rdf:resource="#UseCase"/>
+  </owl:FunctionalProperty>
+
+  <owl:ObjectProperty rdf:ID="exception">
+    <rdfs:comment xml:lang="en"
+    >A use case that is invoked as a result of an exceptional condition that occurs
+     during the invocation of one step of another flow. The precondition of the
+     exception use case is a necessary and sufficient condition for the exception
+     to be invoked.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#Step"/>
+    <rdfs:range rdf:resource="#UseCase"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="extends">
+        <rdfs:comment xml:lang="en"
+        >The step that can invoke a use case under exceptional conditions.
+        </rdfs:comment>
+      </owl:ObjectProperty>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+
+  <owl:FunctionalProperty rdf:ID="startsAfter">
+    <rdfs:comment xml:lang="en"
+    >The step after which an alternative flow begins. The alternative flow begins
+     immediately after the specified step and continues to the end. It does not
+     return to the original flow. To specify an alternative that "joins" back to
+     the original flow, use an alternative of an included use case.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#Alternative"/>
+    <rdfs:range rdf:resource="#Step"/>
+  </owl:FunctionalProperty>
+
+  <owl:FunctionalProperty rdf:ID="initiator">
+    <rdfs:comment xml:lang="en"
+    >The actor or the system that initiates a use case. Such a participant initiates
+     the first step of the use case. This is a derived functional property.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#UseCase"/>
+    <rdfs:range rdf:resource="#Participant"/>
+    <owl:propertyChainAxiom rdf:parseType="Collection">
+      <owl:FunctionalProperty rdf:about="#first"/>
+      <owl:FunctionalProperty rdf:about="#stepInitiator"/>
+    </owl:propertyChainAxiom>
+  </owl:FunctionalProperty>
+
+  <owl:FunctionalProperty rdf:ID="participant">
+    <rdfs:comment xml:lang="en"
+    >The participants of a use case. This will consist of the system and other actors.
+     A participant is the initiator of one of the steps in the flow of the use case.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#UseCase"/>
+    <rdfs:range rdf:resource="#Participant"/>
+    <owl:propertyChainAxiom rdf:parseType="Collection">
+      <owl:FunctionalProperty rdf:about="#first"/>
+      <owl:TransitiveProperty rdf:about="#precedesOrEquals"/>
+      <owl:FunctionalProperty rdf:about="#stepInitiator"/>
+    </owl:propertyChainAxiom>
+  </owl:FunctionalProperty>
+
+  <!-- Attributes -->
+
+  <owl:DatatypeProperty rdf:ID="name">
+    <rdfs:comment xml:lang="en"
+    >The name of a system, actor or flow. A name is required for a system,
+     actor or use case. It is optional for alternative flows.
+    </rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Participant"/>
+          <owl:Class rdf:about="#Flow"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#name"/>
+
+  <owl:DatatypeProperty rdf:ID="exposition">
+    <rdfs:comment xml:lang="en"
+    >Informal exposition of a system, actor or flow.
+    </rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Participant"/>
+          <owl:Class rdf:about="#Flow"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#exposition"/>
+
+  <owl:DatatypeProperty rdf:ID="version">
+    <rdfs:comment xml:lang="en"
+    >The version of a system.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#System"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#version"/>
+
+  <owl:DatatypeProperty rdf:ID="author">
+    <rdfs:comment xml:lang="en"
+    >The authors of a system or flow.
+    </rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#System"/>
+          <owl:Class rdf:about="#Flow"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="organization">
+    <rdfs:comment xml:lang="en"
+    >The sponsoring organizations of a system.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#System"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="creationDate">
+    <rdfs:comment xml:lang="en"
+    >The creation date of a system or flow.
+    </rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#System"/>
+          <owl:Class rdf:about="#Flow"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#creationDate"/>
+
+  <owl:DatatypeProperty rdf:ID="specification">
+    <rdfs:comment xml:lang="en"
+    >The specification of a condition or step. For a condition, the specification
+     is a boolean expression that is usually described informally. For a step, the
+     specification is the action that is being performed by the initiator of the step.
+    </rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Condition"/>
+          <owl:Class rdf:about="#Step"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#specification"/>
+
+</rdf:RDF>

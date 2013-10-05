@@ -1,0 +1,602 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:spin="http://spinrdf.org/spin#"
+    xmlns:sam="http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:basic="http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This version of the ontology uses # URIs to identify ontology elements</rdfs:comment>
+    <owl:imports rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl"/>
+    <dc:creator rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+    >Simon Jonathan David COX
+CSIRO</dc:creator>
+    <owl:imports rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation"/>
+    <owl:versionIRI rdf:resource="https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201210/ISOTC211/HM/sampling.rdf"/>
+    <dc:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An OWL representation of the Sampling Features Schema described in clauses 8-10 of ISO 19156:2011 Geographic Information - Observations and Measurements</dc:description>
+    <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2012-05-25</dc:date>
+    <dc:source rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ISO 19156:2011</dc:source>
+    <owl:imports rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry"/>
+    <owl:imports rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2012-07-24</dcterms:modified>
+    <owl:priorVersion rdf:resource="https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201208-Temporal/ISOTC211/sampling.rdf"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2012-01-19</dcterms:created>
+  </owl:Ontology>
+  <owl:Class rdf:ID="SamplingPoint">
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:subClassOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#FeatureType"/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Spatial sampling feature whose shape is a Point</skos:definition>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SpatialSamplingFeature"/>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#ISOClassName"
+    >SF_SamplingPoint</skos:notation>
+    <rdfs:label xml:lang="en">Sampling point</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="shape"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Point"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Specimen">
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Specimen</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="samplingTime"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="samplingMethod"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SamplingFeature"/>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#ISOClassName"
+    >SF_Specimen</skos:notation>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="specimenType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Specimen is a physical sample, obtained for observation(s) normally carried out ex-situ, sometimes in a laboratory.</skos:definition>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="samplingLocation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#FeatureType"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="materialClass"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="currentLocation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="size"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#Process">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="NotSamplingFeature"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#SamplingFeature">
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sampling features are artefacts of an observational strategy, and have no significant function outside of their role in the observation process. The physical characteristics of the features themselves are of little interest, except perhaps to the manager of a sampling campaign.&#xD;
+&#xD;
+EXAMPLE A “station” is essentially an identifiable locality where a sensor system or procedure may be deployed and an observation made. In the context of the observation model, it connotes the “world in the vicinity of the station”, so the observed properties relate to the physical medium at the station, and not to any physical artefact such as a mooring, buoy, benchmark, monument, well, etc.&#xD;
+&#xD;
+NOTE A transient sampling feature, such as a ships-track or flight-line, might be identified and described, but is unlikely to be revisited exactly.&#xD;
+&#xD;
+A sampling feature is intended to sample some feature-of-interest in an application domain. However, in some cases the identity, and even the exact type, of the sampled feature may not be known when observations are made using the sampling features.</skos:definition>
+    <rdfs:subClassOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#FeatureType"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="lineage"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#ISOClassName"
+    >SF_SamplingFeature</skos:notation>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="sampledFeature"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NotSamplingFeature"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="samplingFeatureComplex"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en">Sampling Feature</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="relatedObservation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SamplingSolid">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SpatialSamplingFeature"/>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#ISOClassName"
+    >SF_SamplingSolid</skos:notation>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#shape"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Solid"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Spatial sampling feature whose shape is a Solid</skos:definition>
+    <rdfs:label xml:lang="en">Sampling solid</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#FeatureType"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+  </owl:Class>
+  <owl:Class rdf:about="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature">
+    <owl:disjointUnionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#SamplingFeature"/>
+    </owl:disjointUnionOf>
+    <owl:disjointUnionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#NotSamplingFeature"/>
+    </owl:disjointUnionOf>
+    <owl:disjointWith rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Location">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Location</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Object"/>
+          <rdf:Description rdf:about="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#GeographicDescription"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#Union"/>
+    <skos:notation rdf:datatype="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#ISOClassName"
+    >Location</skos:notation>
+  </owl:Class>
+  <owl:Class rdf:ID="SamplingCurve">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#shape"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Curve"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#ISOClassName"
+    >SF_SamplingCurve</skos:notation>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SpatialSamplingFeature"/>
+    </rdfs:subClassOf>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Spatial sampling feature whose shape is a Curve</skos:definition>
+    <rdfs:subClassOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#FeatureType"/>
+    <rdfs:label xml:lang="en">Sampling curve</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource=""/>
+  </owl:Class>
+  <owl:Class rdf:about="#SpatialSamplingFeature">
+    <rdfs:subClassOf rdf:resource="#SamplingFeature"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#shape"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >2</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="positionalAccuracy"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en">Spatial sampling feature</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#FeatureType"/>
+    <skos:notation rdf:datatype="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#ISOClassName"
+    >SF_SpatialSamplingFeature</skos:notation>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >When observations are made to estimate properties of a geospatial feature, in particular where the value of a property varies within the scope of the feature, a spatial sampling feature is used. Depending on accessibility and on the nature of the expected property variation, the sampling feature may be extensive in one, two or three spatial dimensions. Processing and visualization methods are often dependent on the topological dimension of the sampling manifold, so this provides a natural classification system for sampling features.&#xD;
+&#xD;
+This classification follows common practice in focussing on conventional spatial dimensions. Properties observed on sampling features may be time-dependent, but the temporal axis does not generally contribute to the classification of sampling feature classes. Sampling feature identity is usually less time-dependent than the property value.</skos:definition>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hostedProcedure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SamplingFeatureComplex">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sampling features are frequently related to each other, as parts of complexes, through sub-sampling, and in other ways. If present, the association class SamplingFeatureComplex (Figure 9) shall link an SF_SamplingFeature to another SF_SamplingFeature.</skos:definition>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="relatedSamplingFeature"/>
+        </owl:onProperty>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:qualifiedCardinality>
+        <owl:onClass rdf:resource="#SamplingFeature"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#ISOClassName"
+    >SamplingFeatureComplex</skos:notation>
+    <rdfs:label xml:lang="en">Sampling feature complex</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="role"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SamplingFeatureCollection">
+    <skos:notation rdf:datatype="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#ISOClassName"
+    >SF_SamplingFeatureCollection</skos:notation>
+    <rdfs:subClassOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#FeatureType"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="member"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:label xml:lang="en">Sampling feature collection</rdfs:label>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The class SF_SamplingFeatureCollection (Figure 9) is an instance of the «metaclass» GF_FeatureType (ISO 19109), which therefore represents a feature type. SF_SamplingFeatureCollection shall support one association.</skos:definition>
+    <rdfs:isDefinedBy rdf:resource=""/>
+  </owl:Class>
+  <owl:Class rdf:ID="SamplingSurface">
+    <rdfs:subClassOf rdf:resource="#SpatialSamplingFeature"/>
+    <skos:notation rdf:datatype="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#ISOClassName"
+    >SF_SamplingSurface</skos:notation>
+    <rdfs:subClassOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#FeatureType"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Spatial sampling feature whose shape is a Surface</skos:definition>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#shape"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Surface"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en">Sampling surface</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Process">
+    <rdfs:subClassOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#FeatureType"/>
+    <rdfs:label xml:lang="en">Sampling process</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <skos:notation rdf:datatype="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#ISOClassName"
+    >SF_Process</skos:notation>
+    <owl:disjointWith rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#Process"/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The class SF_Process (Figure 13) is an instance of the «metaclass» GF_FeatureType (ISO 19109), which therefore represents a feature type. The SF_Process is abstract, and has no attributes, operations or associations. It serves as the base class for processes associated with the design and preparation of sampling features. The purpose of a sampling process is to generate or transform a sampling feature.</skos:definition>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NotSamplingFeature"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PreparationStep">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="time"/>
+        </owl:onProperty>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:qualifiedCardinality>
+        <owl:onClass rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19108/2006/temporal#Object"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="processingDetails"/>
+        </owl:onProperty>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:qualifiedCardinality>
+        <owl:onClass rdf:resource="#Process"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#ISOClassName"
+    >PreparationStep</skos:notation>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty"/>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxQualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="processOperator"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In many applications, specimen preparation procedures are applied to the material prior to its use in an observation. The class PreparationStep (Figure 13) shall link an SF_Specimen to an SF_Process that describes a phase of the specimen preparation. </skos:definition>
+    <rdfs:label xml:lang="en">Preparation step</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource=""/>
+  </owl:Class>
+  <owl:Class rdf:about="http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#Observation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NotSamplingFeature"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#NotSamplingFeature">
+    <rdfs:subClassOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19150-2/2012/hm2owl#FeatureType"/>
+    <rdfs:subClassOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Not a sampling feature</rdfs:label>
+    <owl:disjointWith rdf:resource="#SamplingFeature"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#lineage">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:range rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage#Lineage"/>
+    <rdfs:label xml:lang="en">Lineage</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >If present, the attribute lineage:LI_Lineage shall describe the history and provenance of the SF_SamplingFeature. This might include information relating to the handling of the specimen, or details of the survey procedure of a spatial sampling feature.</skos:definition>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#shape">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:range rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Object"/>
+    <rdfs:label xml:lang="en">Spatial sampling feature shape</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The association Geometry shall link an SF_SpatialSamplingFeature to a GM_Object that describes its shape.</skos:definition>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#size">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:label xml:lang="en">Specimen size</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#measure"/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >the attribute size:Measure shall describe a physical extent of the specimen. This may be length, mass, volume, etc., as appropriate for the specimen instance and its material class.</skos:definition>
+    <rdfs:isDefinedBy rdf:resource=""/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#samplingTime">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The attribute samplingTime:TM_Object shall record when the specimen was retrieved from the sampled feature.</skos:definition>
+    <rdfs:label xml:lang="en">Sampling time</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:range rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19108/2006/temporal#Object"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#role">
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label xml:lang="en">Role</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#materialClass">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Material class</rdfs:label>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The attribute materialClass:GenericName shall provide a basic classification of the material type of the specimen.&#xD;
+&#xD;
+EXAMPLE Soil, water, rock, aqueous, liquid, tissue, vegetation, food.</skos:definition>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#processOperator">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Process operator</rdfs:label>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >the attribute processOperator:CI_ResponsibleParty shall describe the operator of the process involved in the preparation step.</skos:definition>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#relatedObservation">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Related observation</rdfs:label>
+    <rdfs:range rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#Observation"/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sampling features are distinctive compared with other features from application domains by having navigable associations to observations. If present, the association Design shall link the SF_SamplingFeature to an OM_Observation that was made utilizing the sampling feature, and the description of the sampling feature provides an intrinsic element of the observation protocol, along with the observation procedure (7.2.2) and the decomposition of the domain geometry in the case of a coverage-valued result (8.3.2). The OM_Observation has the role relatedObservation with respect to the sampling feature. Multiple observations may be made on a single sampling feature.</skos:definition>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hostedProcedure">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Hosted procedure or instrument</rdfs:label>
+    <rdfs:range rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#Process"/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A common role for a spatial sampling feature is to host instruments or procedures deployed repetitively or permanently. If present, the association Platform shall link the SF_SpatialSamplingFeature to an OM_Process deployed at it. The OM_Process has the role hostedProcedure with respect to the sampling feature.</skos:definition>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="parameter">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Sampling feature parameter</rdfs:label>
+    <owl:equivalentProperty rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#parameter"/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >the attribute parameter:NamedValue shall describe an arbitrary parameter associated with the SF_SamplingFeature. This might be a parameter that qualifies the interaction with the sampled feature, or an environmental parameter associated with the sampling process.</skos:definition>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#specimenType">
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Specimen type</rdfs:label>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >the attribute specimenType:GenericName shall describe the basic form of the specimen. &#xD;
+&#xD;
+EXAMPLE Polished section; core; pulp; solution.</skos:definition>
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#time">
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The attribute time:TM_Object shall describe the time that the SF_Process was applied to the SF_Specimen. It supports ordering of preparation steps.</skos:definition>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label xml:lang="en">Preparation step time</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:range rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19108/2006/temporal#Object"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#relatedSamplingFeature">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Related sampling feature</rdfs:label>
+    <rdfs:range rdf:resource="#SamplingFeature"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#samplingFeatureComplex">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Sampling feature complex</rdfs:label>
+    <rdfs:range rdf:resource="#SamplingFeatureComplex"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#member">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Member sampling feature</rdfs:label>
+    <rdfs:range rdf:resource="#SamplingFeature"/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The association Collection shall link an SF_SamplingFeatureCollection to member SF_SamplingFeatures.</skos:definition>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#processingDetails">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Processing details</rdfs:label>
+    <rdfs:range rdf:resource="#Process"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#positionalAccuracy">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:range rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#PositionalAccuracy"/>
+    <rdfs:label xml:lang="en">Positional accuracy</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Positioning metadata is commonly associated with sampling features defined in the context of field surveys. If present, positionalAccuracy:DQ_PositionalAccuracy shall describe the accuracy of the positioning of the sampling feature. Up to two instances of the attribute support the independent description of horizontal and vertical accuracy.</skos:definition>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#samplingMethod">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Sampling method</rdfs:label>
+    <rdfs:range rdf:resource="#Process"/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >If present, the attribute samplingMethod:SF_Process shall describe the method used to obtain the specimen from its sampledFeature.</skos:definition>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="preparationStep">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Preparation step</rdfs:label>
+    <rdfs:range rdf:resource="#PreparationStep"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#currentLocation">
+    <rdfs:label xml:lang="en">Current location</rdfs:label>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >If present, the attribute currentLocation:Location shall describe the location of a physical specimen. This may be a storage location, such as a shelf in a warehouse or a drawer in a museum.&#xD;
+&#xD;
+NOTE If a specimen no longer exists, for example, it was destroyed in connection with an observation act, then the currentLocation should be omitted or carry a suitable null indicator.</skos:definition>
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:range rdf:resource="#Location"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#sampledFeature">
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label xml:lang="en">Sampled feature</rdfs:label>
+    <rdfs:range rdf:resource="#NotSamplingFeature"/>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A sampling feature is established in order to make observations concerning some domain feature. The association Intention shall link the SF_SamplingFeature to the feature which the sampling feature was designed to sample. The target of this association has the role sampledFeature with respect to the sampling feature, and shall not be a sampling feature or observation. It is usually a real-world feature from an application domain (Figures 5 and 10).&#xD;
+&#xD;
+EXAMPLE A profile typically samples a water- or atmospheric-column; a well samples the water in an aquifer; a tissue specimen samples a part of an organism.</skos:definition>
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#samplingLocation">
+    <rdfs:domain rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature"/>
+    <rdfs:label xml:lang="en">Sampling location</rdfs:label>
+    <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >If present, the attribute samplingLocation:GM_Object shall describe the location from where the specimen was obtained.&#xD;
+&#xD;
+NOTE Where a specimen has a relatedSamplingFeature whose location provides an unambiguous location then this attribute is not required. However, if the specific sampling location within the sampledFeature is important, then this attribute supports its description.</skos:definition>
+    <rdfs:range rdf:resource="http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Object"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+  </owl:ObjectProperty>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

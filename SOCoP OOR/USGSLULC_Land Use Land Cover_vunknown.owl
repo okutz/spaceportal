@@ -1,0 +1,371 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY Ontology1347457797421 "http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:Ontology1347457797421="http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#AgriculturalLand -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;AgriculturalLand">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#BareExposedRock -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;BareExposedRock">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;BarrenLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#BareGround -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;BareGround">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Tundra"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#BarrenLand -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;BarrenLand">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#BaysEstuaries -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;BaysEstuaries">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Water"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#Beaches -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;Beaches">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;BarrenLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#CommercialandServices -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;CommercialandServices">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;UrbanorBuiltupLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#ConfinedFeedingOperations -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;ConfinedFeedingOperations">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;AgriculturalLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#CroplandandPasture -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;CroplandandPasture">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;AgriculturalLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#DrySaltFlats -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;DrySaltFlats">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;BarrenLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#ForestedWetland -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;ForestedWetland">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Wetland"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#Glaciers -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;Glaciers">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;PerennialSnoworIce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#HerbaceousRangeland -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;HerbaceousRangeland">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Rangeland"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#HerbaceousTundra -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;HerbaceousTundra">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Tundra"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#Industrial -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;Industrial">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;UrbanorBuiltupLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#IndustrialandCommercialComplexes -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;IndustrialandCommercialComplexes">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;UrbanorBuiltupLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#Lakes -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;Lakes">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Water"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#MixedBarrenLand -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;MixedBarrenLand">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;BarrenLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#MixedRangeland -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;MixedRangeland">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Rangeland"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#MixedTundra -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;MixedTundra">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Tundra"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#MixedUrbanorBuiltupLand -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;MixedUrbanorBuiltupLand">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;UrbanorBuiltupLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#NonforestedWetland -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;NonforestedWetland">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Wetland"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#OrchardsGrovesVineyardsNurseriesOrnamentalHorticulturalAreas -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;OrchardsGrovesVineyardsNurseriesOrnamentalHorticulturalAreas">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;AgriculturalLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#OtherAgriculturalLand -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;OtherAgriculturalLand">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;AgriculturalLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#OtherUrbanorBuiltupLand -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;OtherUrbanorBuiltupLand">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;UrbanorBuiltupLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#PerennialSnowfields -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;PerennialSnowfields">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;PerennialSnoworIce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#PerennialSnoworIce -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;PerennialSnoworIce">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#Rangeland -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;Rangeland">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#Reservoirs -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;Reservoirs">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Water"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#Residential -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;Residential">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;UrbanorBuiltupLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#SandyAreasOtherthanBeaches -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;SandyAreasOtherthanBeaches">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;BarrenLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#ShrubandBrushRangeland -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;ShrubandBrushRangeland">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Rangeland"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#ShrubandBrushTundra -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;ShrubandBrushTundra">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Tundra"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#StreamsCanals -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;StreamsCanals">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Water"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#StripMinesQuarriesandGravelPits -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;StripMinesQuarriesandGravelPits">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;BarrenLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#TransitionalAreas -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;TransitionalAreas">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;BarrenLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#TransportationCommunicationsandUtilities -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;TransportationCommunicationsandUtilities">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;UrbanorBuiltupLand"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#Tundra -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;Tundra">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#UrbanorBuiltupLand -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;UrbanorBuiltupLand"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#Water -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;Water">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#WetTundra -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;WetTundra">
+        <rdfs:subClassOf rdf:resource="&Ontology1347457797421;Tundra"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347457797421.owl#Wetland -->
+
+    <owl:Class rdf:about="&Ontology1347457797421;Wetland">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

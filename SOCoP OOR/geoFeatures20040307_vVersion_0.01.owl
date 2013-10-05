@@ -1,0 +1,550 @@
+<!DOCTYPE rdf:RDF [ 
+   <!ENTITY owl  "http://www.w3.org/2002/07/owl#">
+   <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+   <!ENTITY geoC "http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#">
+]> 
+
+
+<rdf:RDF xmlns="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+xmlns:owl="http://www.w3.org/2002/07/owl#"
+xmlns:geoF="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#"
+xmlns:geoC="http://www.mindswap.org/2003/owl/geo/geoCoordinateSystems20040307.owl#"
+xml:base="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+>
+
+<!--
+
+sample:
+
+<geoF:Country rdf:ID="Tokelau"> 
+  <rdfs:label>Tokelau</rdfs:label> 
+  <geoF:shape> 
+    <geoF:MultiPolygon rdf:nodeID="TokelauShape"> 
+       <geoF:coordinates> 
+          -171.84805297851562,  
+          9.218889236450195 
+       </geoF:coordinates> 
+      </geoF:MultiPolygon> 
+    </geoF:shape> 
+  </geoF:Country> 
+
+Note: temporal units are derived from DAML time ontology
+Problem: can't express that this distance relationship is symmetric
+
+-->
+
+<owl:Ontology rdf:about="">
+	<owl:versionInfo>Version 0.01</owl:versionInfo>
+	<rdfs:comment>This ontology contains geographic feature classes and associated properties including classes
+and properties for describing the spatial location of the geographic feature.  The classes and properties have been defined based
+on an ESRI dataset.</rdfs:comment>
+	<dc:creator>Femke Reitsma</dc:creator>
+	<dc:date>20th February 2004</dc:date>
+</owl:Ontology>
+
+<owl:Class rdf:ID="SpatialThing">
+	<rdfs:label>SpatialThing</rdfs:label>
+	<rdfs:comment>A spatial thing is the simplest thing that has some spatial characteristics</rdfs:comment> 
+  	<rdfs:subClassOf rdf:resource="&owl;Thing"/>
+</owl:Class>
+
+<owl:Class rdf:ID="GeographicFeature">
+	<rdfs:label>GeographicFeature</rdfs:label> 
+	<rdfs:comment>cities, countries, admin units, and continents are subclasses of GeographicFeature</rdfs:comment>
+  	<rdfs:subClassOf rdf:resource="#SpatialThing"/>
+</owl:Class>
+
+<!-- SPATIAL DESCRIPTIONS -->
+
+<owl:Class rdf:ID="SpatialDescription">
+	<rdfs:label>SpatialDescription</rdfs:label> 
+	<rdfs:comment>A spatial description is a class of spatial descriptors used to describe the
+	spatial shape of a SpatialThing in terms of coordinates</rdfs:comment>
+	<rdfs:subClassOf>
+		<owl:Restriction>
+			<owl:onProperty rdf:resource="&geoC;hasCoordinateSystem"/>
+			<owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+		</owl:Restriction>
+	</rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="Polygon">
+	<rdfs:label>Polygon</rdfs:label>
+	<rdfs:comment></rdfs:comment>  
+  	<rdfs:subClassOf rdf:resource="#SpatialDescription"/>
+	<rdfs:subClassOf>
+		<owl:Restriction>
+			<owl:onProperty rdf:resource="#coordinates"/>
+			<owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+		</owl:Restriction>
+	</rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="Point">
+	<rdfs:label>Point</rdfs:label> 
+	<rdfs:comment></rdfs:comment> 
+  	<rdfs:subClassOf rdf:resource="#SpatialDescription"/>
+	<rdfs:subClassOf>
+		<owl:Restriction>
+			<owl:onProperty rdf:resource="#coordinates"/>
+			<owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+		</owl:Restriction>
+	</rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="Linestring">
+	<rdfs:label>Linestring</rdfs:label>
+	<rdfs:comment></rdfs:comment>  
+  	<rdfs:subClassOf rdf:resource="#SpatialDescription"/>
+	<rdfs:subClassOf>
+		<owl:Restriction>
+			<owl:onProperty rdf:resource="#coordinates"/>
+			<owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+		</owl:Restriction>
+	</rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="MultiPolygon">
+	<rdfs:label>MultiPolygon</rdfs:label> 
+	<rdfs:comment>a collection of polygons</rdfs:comment>
+  	<rdfs:subClassOf rdf:resource="#SpatialDescription"/>
+	<rdfs:subClassOf>
+		<owl:Restriction>
+			<owl:onProperty rdf:resource="#coordinates"/>
+			<owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
+		</owl:Restriction>
+	</rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="MultiLinestring">
+	<rdfs:label>MultiLinestring</rdfs:label> 
+  	<rdfs:comment>a collection of polylines</rdfs:comment>
+  	<rdfs:subClassOf rdf:resource="#SpatialDescription"/>
+	<rdfs:subClassOf>
+		<owl:Restriction>
+			<owl:onProperty rdf:resource="#coordinates"/>
+			<owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
+		</owl:Restriction>
+	</rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="MultiPoint">
+	<rdfs:label>MultiPoint</rdfs:label> 
+	<rdfs:comment>a collection of points</rdfs:comment>
+  	<rdfs:subClassOf rdf:resource="#SpatialDescription"/>
+	<rdfs:subClassOf>
+		<owl:Restriction>
+			<owl:onProperty rdf:resource="#coordinates"/>
+			<owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
+		</owl:Restriction>
+	</rdfs:subClassOf>
+</owl:Class>
+
+
+<!-- SPATIAL PROPERTIES -->
+
+
+<owl:ObjectProperty rdf:ID="shape">
+  	<rdfs:label>shape</rdfs:label>
+	<rdfs:comment>The property shape associates a geographic feature with a Spatial Description defined by a blank node</rdfs:comment>  
+  	<rdfs:domain rdf:resource="#GeographicFeature" /> 
+	<rdfs:range rdf:resource="#SpatialDescription"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:ID="xyCoordinates">
+	<rdfs:label>coordinates</rdfs:label> 
+	<rdfs:comment>xyCoordinates define the x,y location of a spatial thing.  They must be ordered as "x,y x,y x,y ..."</rdfs:comment>
+	<rdfs:domain rdf:resource="#SpatialDescription" />
+	<rdfs:domain rdf:resource="&geoC;CoordinateOrigin" />
+	<rdfs:range rdf:resource="&xsd;string"/> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="xyzCoordinates">
+	<rdfs:label>coordinates</rdfs:label> 
+	<rdfs:comment>xyCoordinates define the x,y,z location of a spatial thing.  They must be ordered as "x,y,z x,y,z x,y,z..."</rdfs:comment>
+	<rdfs:domain rdf:resource="#SpatialDescription" />
+	<rdfs:domain rdf:resource="&geoC;CoordinateOrigin" />
+	<rdfs:range rdf:resource="&xsd;string"/> 
+</owl:DatatypeProperty>
+
+<owl:ObjectProperty rdf:ID="hasSpatialLocation">
+	<rdfs:label>hasSpatialLocation</rdfs:label> 
+	<rdfs:comment>hasSpatialLocation defines the qualitative location of some spatial thing</rdfs:comment>
+	<rdfs:domain rdf:resource="&owl;Thing" /> 
+	<rdfs:range rdf:resource="#SpatialThing"/> 
+</owl:ObjectProperty>
+
+
+<!-- GEOGRAPHIC FEATURE CLASSES -->
+			
+
+<owl:Class rdf:nodeID="Continent">
+	<rdfs:label>Continent</rdfs:label> 
+	<rdfs:subClassOf rdf:resource="#GeographicFeature" /> 
+</owl:Class>
+
+<owl:Class rdf:nodeID="Country">
+	<rdfs:label>Country</rdfs:label> 
+	<rdfs:subClassOf rdf:resource="#GeographicFeature" /> 
+</owl:Class>
+
+<owl:Class rdf:ID="Building">
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:nodeID="Park">
+	<rdfs:label>Park</rdfs:label> 
+	<rdfs:subClassOf rdf:resource="#GeographicFeature" /> 
+</owl:Class>
+
+<owl:Class rdf:nodeID="Street">
+	<rdfs:label>Street</rdfs:label> 
+	<rdfs:subClassOf rdf:resource="#GeographicFeature" /> 
+</owl:Class>
+
+<owl:Class rdf:ID="Administrative_Region">
+	<rdfs:label>Administrative Region</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Administrative_Subdivision">
+	<rdfs:label>Administrative Subdivision</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Area">
+	<rdfs:label>Area</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Autonomous_Community">
+	<rdfs:label>Autonomous Community</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Autonomous_Municipality">
+	<rdfs:label>Autonomous Municipality</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Autonomous_Region">
+	<rdfs:label>Autonomous Region</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Canton">
+	<rdfs:label>Canton</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Capital_City">
+	<rdfs:label>Capital City</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Capital_Municipality">
+	<rdfs:label>Capital Municipality</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Capital_Territory">
+	<rdfs:label>Capital Territory</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="City">
+	<rdfs:label>City</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Constitutional_Province">
+	<rdfs:label>Constitutional Province</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="County">
+	<rdfs:label>County</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Department">
+	<rdfs:label>Department</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="District">
+	<rdfs:label>District</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Division">
+	<rdfs:label>Division</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Economic_Prefecture">
+	<rdfs:label>Economic Prefecture</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Emirate">
+	<rdfs:label>Emirate</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Federal_Dependencies">
+	<rdfs:label>Federal Dependencies</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Federal_District">
+	<rdfs:label>Federal District</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Federal_Status_City">
+	<rdfs:label>Federal Status City</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Federal_Territory">
+	<rdfs:label>Federal Territory</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Governorate">
+	<rdfs:label>Governorate</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Independent_Town">
+	<rdfs:label>Independent Town</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Intendancy">
+	<rdfs:label>Intendancy</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Municipality">
+	<rdfs:label>Municipality</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="National_District">
+	<rdfs:label>National District</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="National_Territory">
+	<rdfs:label>National Territory</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Pakistan-administered">
+	<rdfs:label>Pakistan-administered</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Parish">
+	<rdfs:label>Parish</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Prefecture">
+	<rdfs:label>Prefecture</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Province">
+	<rdfs:label>Province</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Region">
+	<rdfs:label>Region</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Republic">
+	<rdfs:label>Republic</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Special_City">
+	<rdfs:label>Special City</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Special_District">
+	<rdfs:label>Special District</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Special_Municipality">
+	<rdfs:label>Special Municipality</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Special_Region">
+	<rdfs:label>Special Region</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="State">
+	<rdfs:label>State</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Territory">
+	<rdfs:label>Territory</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Town">
+	<rdfs:label>Town</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Union_Territory">
+	<rdfs:label>Union Territory</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Zone">
+	<rdfs:label>Zone</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeographicFeature"/>
+</owl:Class>
+
+
+
+
+<!-- GEOGRAPHIC FEATURE PROERTIES -->
+
+<owl:DatatypeProperty rdf:ID="fips_admin">
+	<rdfs:label>fips_admin</rdfs:label> 
+	<rdfs:domain rdf:resource="#GeographicFeature" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="gmi_admin">
+	<rdfs:label>gmi_admin</rdfs:label> 
+	<rdfs:domain rdf:resource="#GeographicFeature" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="pop_admin">
+	<rdfs:label>pop_admin</rdfs:label> 
+	<rdfs:domain rdf:resource="#GeographicFeature" /> 
+	<rdfs:comment>Population of the administrative unit</rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="sqkm">
+	<rdfs:label>sqkm</rdfs:label> 
+	<rdfs:domain rdf:resource="#GeographicFeature" /> 
+	<rdfs:comment>Area in square kilometers</rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="type_loc">
+	<rdfs:label>type_loc</rdfs:label> 
+	<rdfs:domain rdf:resource="#GeographicFeature" /> 
+	<rdfs:comment>Type of administrative unit in language of country</rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="city_name">
+	<rdfs:label>city_name</rdfs:label> 
+	<rdfs:domain rdf:resource="#City" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="admin_name">
+	<rdfs:label>admin_name</rdfs:label> 
+	<rdfs:domain rdf:resource="#City" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="cntry_name">
+	<rdfs:label>cntry_name</rdfs:label> 
+	<rdfs:domain rdf:resource="#City" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="status">
+	<rdfs:label>status</rdfs:label> 
+	<rdfs:domain rdf:resource="#City" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="pop_rank">
+	<rdfs:label>pop_rank</rdfs:label> 
+	<rdfs:domain rdf:resource="#City" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="pop_class">
+	<rdfs:label>pop_class</rdfs:label> 
+	<rdfs:domain rdf:resource="#City" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="port_id">
+	<rdfs:label>port_id</rdfs:label> 
+	<rdfs:domain rdf:resource="#City" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="fips_cntry">
+	<rdfs:label>fips_cntry</rdfs:label> 
+	<rdfs:domain rdf:resource="#GeographicFeature" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="gmi_cntry">
+	<rdfs:label>gmi_cntry</rdfs:label> 
+	<rdfs:domain rdf:resource="#GeographicFeature" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="iso_2digit">
+	<rdfs:label>ISO_2DIGIT</rdfs:label> 
+	<rdfs:domain rdf:resource="#GeographicFeature" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="iso_3digit">
+	<rdfs:label>ISO_3DIGIT</rdfs:label> 
+	<rdfs:domain rdf:resource="#GeographicFeature" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="sovereign">
+	<rdfs:label>sovereign</rdfs:label> 
+	<rdfs:domain rdf:resource="#GeographicFeature" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="pop_cntry">
+	<rdfs:label>pop_admin</rdfs:label> 
+	<rdfs:domain rdf:resource="#Country" /> 
+	<rdfs:comment>Population of the country</rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="curr_type">
+	<rdfs:label>curry_type</rdfs:label> 
+	<rdfs:domain rdf:resource="#Country" /> 
+	<rdfs:comment>Type of currency in country</rdfs:comment> 
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="curr_code">
+	<rdfs:label>curr_code</rdfs:label> 
+	<rdfs:domain rdf:resource="#Country" /> 
+	<rdfs:comment></rdfs:comment> 
+</owl:DatatypeProperty>
+
+
+</rdf:RDF>

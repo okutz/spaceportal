@@ -1,0 +1,343 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY gml "http://www.geospatialmeaning.eu/geo-ontologies-survey/W3C-Geo2007/" >
+]>
+
+
+<rdf:RDF xmlns="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#"
+     xml:base="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:gml="http://www.geospatialmeaning.eu/geo-ontologies-survey/W3C-Geo2007/">
+    <owl:Ontology rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl">
+        <owl:imports rdf:resource="&gml;W3C_geo2007.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasCentroid -->
+
+    <owl:ObjectProperty rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasCentroid">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <owl:inverseOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#isCentroidOf"/>
+        <rdfs:range rdf:resource="&gml;Point"/>
+        <rdfs:domain rdf:resource="&gml;_Geometry"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasFeatureCode -->
+
+    <owl:ObjectProperty rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasFeatureCode">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#TypedFeature"/>
+        <rdfs:range rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#_FeatureCode"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasNiceViewsOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasNiceViewsOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasSpatialRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasSpatialPart -->
+
+    <owl:ObjectProperty rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasSpatialPart">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasSpatialRelation"/>
+        <rdfs:domain rdf:resource="&gml;_Feature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasSpatialRelation -->
+
+    <owl:ObjectProperty rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasSpatialRelation">
+        <rdfs:domain rdf:resource="&gml;_Feature"/>
+        <rdfs:range rdf:resource="&gml;_Feature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#isCentroidOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#isCentroidOf">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="&gml;Point"/>
+        <rdfs:range rdf:resource="&gml;_Geometry"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#isLocatedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#isLocatedIn">
+        <rdfs:range rdf:resource="&gml;_Feature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#isSpatialNeighbour -->
+
+    <owl:ObjectProperty rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#isSpatialNeighbour">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasSpatialRelation"/>
+        <owl:inverseOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#isSpatialNeighbour"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#isSpatialPartOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#isSpatialPartOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <owl:inverseOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasSpatialPart"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasSpatialRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#isSpatiallyEqual -->
+
+    <owl:ObjectProperty rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#isSpatiallyEqual">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasSpatialRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/W3C-Geo2007/exterior -->
+
+    <owl:ObjectProperty rdf:about="&gml;exterior"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#featureRelevance -->
+
+    <owl:DatatypeProperty rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#featureRelevance">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&gml;_Feature"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#AdministrativeFeature -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#AdministrativeFeature">
+        <rdfs:subClassOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#TypedFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#AreaFeature -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#AreaFeature">
+        <rdfs:subClassOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#TypedFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#BuildingFeature -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#BuildingFeature">
+        <rdfs:subClassOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#TypedFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#CentroidedPolygon -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#CentroidedPolygon">
+        <rdfs:subClassOf rdf:resource="&gml;Polygon"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasCentroid"/>
+                <owl:someValuesFrom rdf:resource="&gml;Point"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasCentroid"/>
+                <owl:allValuesFrom rdf:resource="&gml;Point"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#GeoConceptFeature -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#GeoConceptFeature">
+        <rdfs:subClassOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#TypedFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#HydrographicFeature -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#HydrographicFeature">
+        <rdfs:subClassOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#TypedFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#HypsographicFeature -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#HypsographicFeature">
+        <rdfs:subClassOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#TypedFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#PopulationFeature -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#PopulationFeature">
+        <rdfs:subClassOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#TypedFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#RoadFeature -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#RoadFeature">
+        <rdfs:subClassOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#TypedFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#TypedFeature -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#TypedFeature">
+        <rdfs:subClassOf rdf:resource="&gml;_Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasFeatureCode"/>
+                <owl:someValuesFrom rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#_FeatureCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#hasFeatureCode"/>
+                <owl:allValuesFrom rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#_FeatureCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#UnderseaFeature -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#UnderseaFeature">
+        <rdfs:subClassOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#TypedFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#VegetationFeature -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#VegetationFeature">
+        <rdfs:subClassOf rdf:resource="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#TypedFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#_FeatureCode -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#_FeatureCode"/>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#roadfeature -->
+
+    <owl:Class rdf:about="http://www.geospatialmeaning.eu/geo-ontologies-survey/GeoConcepts/GeoConcepts_v1.1_20080301Lite.owl#roadfeature"/>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/W3C-Geo2007/LinearRing -->
+
+    <owl:Class rdf:about="&gml;LinearRing"/>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/W3C-Geo2007/Point -->
+
+    <owl:Class rdf:about="&gml;Point"/>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/W3C-Geo2007/Polygon -->
+
+    <owl:Class rdf:about="&gml;Polygon">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gml;exterior"/>
+                <owl:someValuesFrom rdf:resource="&gml;LinearRing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/W3C-Geo2007/_Feature -->
+
+    <owl:Class rdf:about="&gml;_Feature"/>
+    
+
+
+    <!-- http://www.geospatialmeaning.eu/geo-ontologies-survey/W3C-Geo2007/_Geometry -->
+
+    <owl:Class rdf:about="&gml;_Geometry"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.1.0.1602) http://owlapi.sourceforge.net -->
+

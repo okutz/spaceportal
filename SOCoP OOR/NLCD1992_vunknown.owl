@@ -1,0 +1,326 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#BareRockSandClay -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#BareRockSandClay">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Barren"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Perennially barren areas of bedrock, desert pavement, scarps, talus, slides, volcanic material, glacial debris, beaches, and other accumulations of earthen material.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Barren -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Barren">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas characterized by bare rock, gravel, sand, silt, clay, or other earthen material, with little or no &quot;green&quot; vegetation present regardless of its inherent ability to support life. Vegetation, if present, is more widely spaced and scrubby than that in the &quot;green&quot; vegetated categories; lichen cover may be extensive. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#CommercialIndustrialTransportation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#CommercialIndustrialTransportation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Developed"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Includes infrastructure (e.g. roads, railroads, etc.) and all highly developed areas not classified as High Intensity Residential.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#DeciduousForest -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#DeciduousForest">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#ForestedUpland"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas dominated by trees where 75 percent or more of the tree species shed foliage simultaneously in response to seasonal change.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Developed -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Developed">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas characterized by a high percentage (30 percent or greater) of constructed materials (e.g. asphalt, concrete, buildings, etc).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#EmergentHerbaceousWetlands -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#EmergentHerbaceousWetlands">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Wetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas where perennial herbaceous vegetation accounts for 75-100 percent of the cover and the soil or substrate is periodically saturated with or covered with water. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#EvergreenForest -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#EvergreenForest">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#ForestedUpland"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas dominated by trees where 75 percent or more of the tree species `maintain their leaves all year. Canopy is never without green foliage.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Fallow -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Fallow">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#PlantedCultivated"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas used for the production of crops that do not exhibit visable vegetation as a result of being tilled in a management practice that incorporates prescribed alternation between cropping and tillage.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#ForestedUpland -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#ForestedUpland">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas characterized by tree cover (natural or semi-natural woody vegetation, generally greater than 6 meters tall); tree canopy accounts for 25-100 percent of the cover.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#GrasslandsHerbaceous -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#GrasslandsHerbaceous">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#HerbaceousUpland"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas dominated by upland grasses and forbs. In rare cases, herbaceous cover is less than 25 percent, but exceeds the combined cover of the woody species present. These areas are not subject to intensive management, but they are often utilized for grazing.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#HerbaceousUpland -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#HerbaceousUpland">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Upland areas characterized by natural or semi-natural herbaceous vegetation; herbaceous vegetation accounts for 75-100 percent of the cover.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#HighIntensityResidential -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#HighIntensityResidential">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Developed"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">ncludes highly developed areas where people reside in high numbers. Examples include apartment complexes and row houses. Vegetation accounts for less than 20 percent of the cover. Constructed materials account for 80 to100 percent of the cover.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#LowIntensityResidential -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#LowIntensityResidential">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Developed"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Includes areas with a mixture of constructed materials and vegetation. Constructed materials account for 30-80 percent of the cover. Vegetation may account for 20 to 70 percent of the cover. These areas most commonly include single-family housing units. Population densities will be lower than in high intensity residential areas.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#MixedForest -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#MixedForest">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#ForestedUpland"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas dominated by trees where neither deciduous nor evergreen species represent more than 75 percent of the cover present. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#NonNaturalWoody -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#NonNaturalWoody">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas dominated by non-natural woody vegetation; non-natural woody vegetative canopy accounts for 25-100 percent of the cover. The non-natural woody classification is subject to the availability of sufficient ancillary data to differentiate non-natural woody vegetation from natural woody vegetation. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#OpenWater -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#OpenWater">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Water"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">all areas of open water, generally with less than 25% cover of vegetation/land cover. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#OrchardsVineyardsOther -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#OrchardsVineyardsOther">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#NonNaturalWoody"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Orchards, vineyards, and other areas planted or maintained for the production of fruits, nuts, berries, or ornamentals. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#PastureHay -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#PastureHay">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#PlantedCultivated"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas of grasses, legumes, or grass-legume mixtures planted for livestock grazing or the production of seed or hay crops.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#PerennialIceSnow -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#PerennialIceSnow">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Water"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">all areas characterized by year-long surface cover of ice and/or snow.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#PlantedCultivated -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#PlantedCultivated">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas characterized by herbaceous vegetation that has been planted or is intensively managed for the production of food, feed, or fiber; or is maintained in developed settings for specific purposes. Herbaceous vegetation accounts for 75-100 percent of the cover. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#QuarriesStripMinesGravelPits -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#QuarriesStripMinesGravelPits">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Barren"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas of extractive mining activities with significant surface expression.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#RowCrops -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#RowCrops">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#PlantedCultivated"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas used for the production of crops, such as corn, soybeans, vegetables, tobacco, and cotton. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Shrub -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Shrub">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Shrubland"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas dominated by shrubs; shrub canopy accounts for 25-100 percent of the cover. Shrub cover is generally greater than 25 percent when tree cover is less than 25 percent. Shrub cover may be less than 25 percent in cases when the cover of other life forms (e.g. herbaceous or tree) is less than 25 percent and shrubs cover exceeds the cover of the other life forms.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Shrubland -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Shrubland">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas characterized by natural or semi-natural woody vegetation with aerial stems, generally less than 6 meters tall, with individuals or clumps not touching to interlocking. Both evergreen and deciduous species of true shrubs, young trees, and trees or shrubs that are small or stunted because of environmental conditions are included.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#SmallGrains -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#SmallGrains">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#PlantedCultivated"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas used for the production of graminoid crops such as wheat, barley, oats, and rice.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Transitional -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Transitional">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Barren"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas of sparse vegetative cover (less than 25 percent of cover) that are dynamically changing from one land cover to another, often because of land use activities. Examples include forest clearcuts, a transition phase between forest and agricultural land, the temporary clearing of vegetation, and changes due to natural causes (e.g. fire, flood, etc.).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#UrbanRecreationalGrasses -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#UrbanRecreationalGrasses">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#PlantedCultivated"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Vegetation (primarily grasses) planted in developed settings for recreation, erosion control, or aesthetic purposes. Examples include parks, lawns, golf courses, airport grasses, and industrial site grasses. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Water -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Water">
+        <rdfs:comment rdf:datatype="&rdfs;Literal">All areas of open water or permanent ice/snow cover.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Wetlands -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Wetlands">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas where the soil or substrate is periodically saturated with or covered with water as defined by Cowardin et al.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#WoodyWetlands -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#WoodyWetlands">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/8/Ontology1347456113812.owl#Wetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas where forest or shrubland vegetation accounts for 25-100 percent of the cover and the soil or substrate is periodically saturated with or covered with water.</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

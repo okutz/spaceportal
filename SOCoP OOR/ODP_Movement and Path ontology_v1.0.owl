@@ -1,0 +1,106 @@
+###########################################
+#   Movement / Path ontology
+###########################################
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix geo: <http://www.opengis.net/def/geosparql/> .
+@prefix sf: <http://www.opengis.net/def/sf/> .
+@prefix gml: <http://www.opengis.net/def/gml/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix spw: <http://www.w3.org/2001/sw/BestPractices/OEP/SimplePartWhole/part.owl> .
+
+@prefix event: <> .
+
+@prefix : <http://vocamp.org/ontology/movement/spatial/> .
+
+
+# Ontology description
+:Ontology a owl:Ontology;
+	owl:versionInfo "0.5";
+	rdfs:comment "This is a geospatial instantation of the generic Movement and Path pattern created at GeoVoCampSB2012.";
+	dc:title "Spatial Motions and Paths" .
+
+	
+# Motion class
+
+:Motion a owl:Class;
+	rdfs:subClassOf event:Event;
+	rdfs:label "Motion";
+	rdfs:comment "A motion is an event in which some entity moves through space" ;
+	rdfs:subClassOf [
+		a owl:Restriction;
+		owl:onProperty :startEvent;
+		owl:allValuesFrom event:Event
+	];
+	rdfs:subClassOf [
+		a owl:Restriction;
+		owl:onProperty :endEvent;
+		owl:allValuesFrom event:Event
+	];
+	rdfs:subClassOf [
+		a owl:Restriction;
+		owl:onProperty :path;
+		owl:allValuesFrom :Path
+	];
+	rdfs:subClassOf [
+		a owl:Restriction;
+		owl:onProperty spw:hasPart;
+		owl:allValuesFrom :Motion
+	] ;
+	rdfs:subClassOf [
+		a owl:Restriction;
+		owl:onProperty :startEvent;
+		owl:allValuesFrom event:Event
+	] .
+	
+# Motion properties
+
+:startEvent a owl:ObjectProperty .
+
+:endEvent a owl:ObjectProperty .
+
+:path a owl:ObjectProperty .	
+
+:movingObject a owl:ObjectProperty .
+
+:entityMovedBy a owl:ObjectProperty .
+
+:frameOfReference a owl:ObjectProperty .
+
+:motionDescription a owl:ObjectProperty .
+
+# Path class
+
+:Path a owl:Class;
+	rdfs:comment "";
+	rdfs:subClassOf geo:Feature;
+	rdfs:subClassOf [
+		a owl:Restriction;
+		owl:onProperty :endpoint;
+		owl:allValuesFrom geo:Feature
+	];
+	rdfs:subClassOf [
+		a owl:Restriction;
+		owl:onProperty spw:hasPart;
+		owl:allValuesFrom :Path
+	] .
+
+:endpoint a owl:ObjectProperty .
+
+:start a owl:ObjectProperty ;
+	rdfs:subPropertyOf :endpoint .
+
+:end a owl:ObjectProperty ;
+	rdfs:subPropertyOf :endpoint .
+	
+:route a owl:ObjectProperty  .
+#	rdfs:subPropertyOf geo:hasGeometry .
+
+:medium a owl:ObjectProperty .
+
+:surface a owl:ObjectProperty .
+
+	

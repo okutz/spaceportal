@@ -1,0 +1,909 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:iso19103="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#"
+    xmlns="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#"
+	xml:base="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment> title- Ontology for Geographic Information Conceptual Schema Language -  ISO 19103.
+    creator- Bora Beran, Akm Saiful Islam, Luis Bermudez, Stephane Fellah, and Michael Piasecki. description- Ontology for ISO 19103. Vocabulary terms are declared using OWL language to support RDF applications. publisher- Drexel University . date- 2004-08-27. format - text/xml. language - English</rdfs:comment>
+    <owl:versionInfo>version 2.0</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="UomAngle">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasISOStandardUnit"/>
+        </owl:onProperty>
+        <owl:hasValue>
+          <ISOStandardUnits rdf:ID="radian">
+            <domainCode xml:lang="en">angle</domainCode>
+            <rdfs:comment xml:lang="en">ISO standard unit for angle
+</rdfs:comment>
+          </ISOStandardUnits>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UnitOfMeasure"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Any of the measuring systems commonly used to measure angles</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="RecordPair">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#AnyValuePair"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#key"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#AttributeName"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="UomLength">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UnitOfMeasure"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Any of the measuring systems to measure the length, distance between two entities</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasISOStandardUnit"/>
+        </owl:onProperty>
+        <owl:hasValue>
+          <ISOStandardUnits rdf:ID="meter">
+            <rdfs:comment xml:lang="en">ISO standard unit for length
+</rdfs:comment>
+            <domainCode xml:lang="en">length</domainCode>
+          </ISOStandardUnits>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AttributeName">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LocalName"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TypeName"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#attributeType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#attributeType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#aName"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Volume">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Measure"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#UomVolume"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#uom"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">The measure of the physical space of any 3-D geometric object</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Velocity">
+    <rdfs:comment xml:lang="en">The instantaneous rate of change of position with time</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#UomTime"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#time"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Measure"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#distance"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#UomLength"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#UomVelocity"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#uom"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Dictionary"/>
+  <owl:Class rdf:ID="RecordSchemaDictionary">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#elements"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#RecordSchemaPair"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Dictionary"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ValueType"/>
+  <owl:Class rdf:ID="Time">
+    <rdfs:comment xml:lang="en">Designation of an instant on a selected time scale</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Measure"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#uom"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#UomTime"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="KeyValuePair">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#key"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="UomArea">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue>
+          <ISOStandardUnits rdf:ID="square_meter">
+            <rdfs:comment xml:lang="en">ISO standard unit for area
+</rdfs:comment>
+            <domainCode xml:lang="en">area</domainCode>
+          </ISOStandardUnits>
+        </owl:hasValue>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasISOStandardUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Any of the measuring systems commonly used to measure area</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UnitOfMeasure"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Multiplicity">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#range"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Defines a multiplicity range from lower to upper</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="RecordTypePair">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#key"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#AttributeName"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ObjectValuePair"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TypeName"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#objectTypeValue"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="KeyType"/>
+  <owl:Class rdf:ID="RecordSchemaPair">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TypeName"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#key"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#RecordType"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#objectTypeValue"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ObjectValuePair"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="UomTime">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UnitOfMeasure"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue>
+          <ISOStandardUnits rdf:ID="second">
+            <domainCode xml:lang="en">time</domainCode>
+            <rdfs:comment xml:lang="en">ISO standard unit for time
+</rdfs:comment>
+          </ISOStandardUnits>
+        </owl:hasValue>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasISOStandardUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Any of the systems or methods of measuring or reckoning the passage of time and/or date, (e.g.,
+seconds, minutes, days, months)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="RecordSchema">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#schemaName"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#LocalName"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#featureClassDescription"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#RecordSchemaDictionary"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#featureClassDescription"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#schemaName"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#element"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RecordDictionary">
+    <rdfs:subClassOf rdf:resource="#Dictionary"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#elements"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#AnyValuePair"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RecordType">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#container"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#RecordTypeDictionary"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#attributeTypes"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#attributeTypes"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#typeName"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TypeName"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#typeName"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ObjectValuePair">
+    <rdfs:subClassOf rdf:resource="#KeyValuePair"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#objectTypeValue"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="UomVolume">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue>
+          <ISOStandardUnits rdf:ID="cubic_meter">
+            <rdfs:comment xml:lang="en">ISO standard unit for volume
+
+</rdfs:comment>
+            <domainCode xml:lang="en">volume</domainCode>
+          </ISOStandardUnits>
+        </owl:hasValue>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasISOStandardUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UnitOfMeasure"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Record">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#attributes"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#RecordDictionary"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#attributes"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#recordType"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">A Record is a structure of logically related elements, and may be used as an implementation representation for features, by keeping a list of (name, value) pairs in a dictionary.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="UnitOfMeasure">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasISOStandardUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#conversionToISOstandardUnit"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Any of the systems devised to measure some physical quantity such distance or area or a system devised to measure such things as the passage of time</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#uomName"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ISOStandardUnits"/>
+  <owl:Class rdf:ID="AnyValuePair">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#dataTypeValue"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#KeyValuePair"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MultiplicityRange">
+    <importantNotes rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >lower=>0 and upper>=lower</importantNotes>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#upper"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#lower"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Angle">
+    <rdfs:comment xml:lang="en">The amount of rotation needed to bring one line or plane into coincidence with another, generally measured in radians or degrees</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#UomAngle"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#uom"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Measure"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TypeName">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LocalName"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#aName"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LocalName">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GenericName"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="UomVelocity">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasISOStandardUnit"/>
+        </owl:onProperty>
+        <owl:hasValue>
+          <ISOStandardUnits rdf:ID="meters_per_second">
+            <domainCode xml:lang="en">velocity</domainCode>
+            <rdfs:comment xml:lang="en">ISO standard unit for velocity
+</rdfs:comment>
+          </ISOStandardUnits>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Any of the measuring systems commonly used to measure velocity</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#UnitOfMeasure"/>
+  </owl:Class>
+  <owl:Class rdf:ID="UomScale">
+    <rdfs:subClassOf rdf:resource="#UnitOfMeasure"/>
+    <rdfs:comment xml:lang="en">Any of the measuring systems commonly used to measure scale, or the ratio between quantities with the same unit</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue>
+          <ISOStandardUnits rdf:ID="meters_per_meter">
+            <rdfs:comment xml:lang="en">ISO standard unit for scale
+</rdfs:comment>
+            <domainCode xml:lang="en">scale</domainCode>
+          </ISOStandardUnits>
+        </owl:hasValue>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasISOStandardUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Measure">
+    <rdfs:comment xml:lang="en">The result from performing the act or process of ascertaining the extent, dimensions, or quantity of some entity</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#uom"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#value"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Vector">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#ordinates"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#dimension"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Distance">
+    <rdfs:comment xml:lang="en">A type for returning the length between two points</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Length"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NameSpace">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#name"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Sign">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#sign"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Scale">
+    <rdfs:subClassOf rdf:resource="#Measure"/>
+    <rdfs:comment xml:lang="en">The ratio of one quantity to another</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#uom"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#UomScale"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#sourceUnits"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#UomLength"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#targetUnits"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#UomLength"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ScopedName">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GenericName"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Area">
+    <rdfs:subClassOf rdf:resource="#Measure"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#UomArea"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#uom"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">The measure of the physical extent of any 2-D geometric object</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Length">
+    <rdfs:comment xml:lang="en">The measure of distance as an integral, for example the length of curve, the perimeter of a polygon as the length of the boundary</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#UomLength"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#uom"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Measure"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GenericName">
+    <rdfs:comment xml:lang="en">GenericName and subclasses of this are used to create a generic scoped and local name structure for type and attribute names in the context of namespaces.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#scope"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RecordTypeDictionary">
+    <rdfs:subClassOf rdf:resource="#Dictionary"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#RecordTypePair"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#elements"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="range">
+    <rdfs:domain rdf:resource="#Multiplicity"/>
+    <rdfs:range rdf:resource="#MultiplicityRange"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="container">
+    <rdfs:range rdf:resource="#RecordSchema"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#element"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#RecordType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="elements">
+    <rdfs:range rdf:resource="#RecordSchemaPair"/>
+    <rdfs:domain rdf:resource="#Dictionary"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="typeName">
+    <rdfs:domain rdf:resource="#RecordType"/>
+    <rdfs:range rdf:resource="#RecordSchema"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="sourceUnits">
+    <rdfs:range rdf:resource="#UnitOfMeasure"/>
+    <rdfs:domain rdf:resource="#Scale"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="time">
+    <rdfs:domain rdf:resource="#Velocity"/>
+    <rdfs:range rdf:resource="#UnitOfMeasure"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="distance">
+    <rdfs:range rdf:resource="#UnitOfMeasure"/>
+    <rdfs:domain rdf:resource="#Velocity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="element">
+    <rdfs:domain rdf:resource="#RecordSchema"/>
+    <owl:inverseOf rdf:resource="#container"/>
+    <rdfs:range rdf:resource="#RecordType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="scope">
+    <rdfs:range rdf:resource="#NameSpace"/>
+    <rdfs:domain rdf:resource="#GenericName"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="key">
+    <rdfs:domain rdf:resource="#KeyValuePair"/>
+    <rdfs:range rdf:resource="#LocalName"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="objectTypeValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#ValueType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasISOStandardUnit">
+    <rdfs:domain rdf:resource="#UnitOfMeasure"/>
+    <rdfs:range rdf:resource="#ISOStandardUnits"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="schemaName">
+    <rdfs:range rdf:resource="#LocalName"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="#RecordSchema"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="attributeType">
+    <rdfs:domain rdf:resource="#AttributeName"/>
+    <rdfs:range rdf:resource="#TypeName"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="record">
+    <rdfs:range rdf:resource="#Record"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#recordType"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#RecordType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="name">
+    <rdfs:domain rdf:resource="#NameSpace"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#GenericName"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="targetUnits">
+    <rdfs:domain rdf:resource="#Scale"/>
+    <rdfs:range rdf:resource="#UnitOfMeasure"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="recordType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#RecordType"/>
+    <rdfs:domain rdf:resource="#Record"/>
+    <owl:inverseOf rdf:resource="#record"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="sign">
+    <rdfs:domain rdf:resource="#Sign"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="conversionToISOstandardUnit">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:domain rdf:resource="#UnitOfMeasure"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="ordinates">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:domain rdf:resource="#Vector"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="upper">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <importantNotes rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >upper>=lower</importantNotes>
+    <rdfs:domain rdf:resource="#MultiplicityRange"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="aName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#LocalName"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:ID="attributes">
+    <rdfs:domain rdf:resource="#Record"/>
+    <rdfs:range rdf:resource="#Dictionary"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="attributeTypes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#Dictionary"/>
+    <rdfs:domain rdf:resource="#RecordType"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="dataTypeValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="uom">
+    <rdfs:range rdf:resource="#UnitOfMeasure"/>
+    <rdfs:domain rdf:resource="#Measure"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="uomName">
+    <rdfs:domain rdf:resource="#UnitOfMeasure"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="value">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#Measure"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="featureClassDescription">
+    <rdfs:range rdf:resource="#Dictionary"/>
+    <rdfs:domain rdf:resource="#RecordSchema"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="dimension">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="#Vector"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="lower">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="#MultiplicityRange"/>
+    <importantNotes rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >lower=>0 and upper>=lower</importantNotes>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:AnnotationProperty rdf:ID="importantNotes" />
+  <owl:AnnotationProperty rdf:ID="domainCode" />
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 1.2 beta, Build 139)  http://protege.stanford.edu -->

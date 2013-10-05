@@ -1,0 +1,124 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://purl.org/geovocamp/ontology/TerrainSurfaceNetworks#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://purl.org/geovocamp/ontology/TerrainSurfaceNetworks> .
+
+<http://purl.org/geovocamp/ontology/TerrainSurfaceNetworks> rdf:type owl:Ontology ;
+                                                            
+                                                            rdfs:label "Cayley/Maxwell Surface Theory Ontology - Terrain Extension"@en ;
+                                                            
+                                                            <http://purl.org/dc/elements/1.1/date> "11/30/2012"@en ;
+                                                            
+                                                            rdfs:seeAlso """Cayley, Arthur. \"XL. On contour and slope lines.\" The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science 18.120 (1859): 264-268. 
+Maxwell, J. Clerk. \"L. On hills and dales.\" (1870): 421-427.
+Warntz, W., 1966. The Topology of a Socio-Economic Terrain and Spatial flows. Papers,
+Regional Science Association, 17, pp. 47-61. """@en ;
+                                                            
+                                                            <http://purl.org/dc/elements/1.1/description> """This ontology was created as a product of the November 2012 Spatial Ontology Community of Practice GeoVoCamp.
+
+The base (SurfaceNetworks) ontology is based on the Cayley/Maxwell theory of surface networks (see Cayley, Arthur. \"XL. On contour and slope lines.\" The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science 18.120 (1859): 264-268., and Maxwell, J. Clerk. \"L. On hills and dales.\" (1870): 421-427.) as applied to topography.  An attempt has been made to to represent those relationships within this model that can be represented in OWL.  
+
+This ontology is an extension of SurfaceNetworks where the surface in question is the terrain of the Earth.  As such it links to GeoSPARQL for representiing the geometries of the various types, and adds elevation as a specialization of surfaceValue."""@en ;
+                                                            
+                                                            owl:imports <http://www.opengis.net/ont/geosparql> ,
+                                                                        <http://purl.org/geovocamp/ontology/SurfaceNetworks> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#surfaceValue
+
+<http://purl.org/geovocamp/ontology/SurfaceNetworks#surfaceValue> rdf:type owl:DatatypeProperty .
+
+
+
+###  http://purl.org/geovocamp/ontology/TerrainSurfaceNetworks#elevation
+
+:elevation rdf:type owl:DatatypeProperty ;
+           
+           rdfs:subPropertyOf <httphttp://purl.org/geovocamp/ontology/SurfaceNetworks#surfaceValue> .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#ContourLine
+
+<http://purl.org/geovocamp/ontology/SurfaceNetworks#ContourLine> rdf:type owl:Class ;
+                                                                    
+                                                                    rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Feature> .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#CriticalPoint
+
+<http://purl.org/geovocamp/ontology/SurfaceNetworks#CriticalPoint> rdf:type owl:Class ;
+                                                                      
+                                                                      rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Feature> ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :elevation ;
+                                                                                        owl:someValuesFrom xsd:double
+                                                                                      ] .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#HillOrDale
+
+<http://purl.org/geovocamp/ontology/SurfaceNetworks#HillOrDale> rdf:type owl:Class ;
+                                                                   
+                                                                   rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Feature> .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#SlopeLine
+
+<http://purl.org/geovocamp/ontology/SurfaceNetworks#SlopeLine> rdf:type owl:Class ;
+                                                                  
+                                                                  rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Feature> .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#Territory
+
+<http://purl.org/geovocamp/ontology/SurfaceNetworks#Territory> rdf:type owl:Class ;
+                                                                  
+                                                                  rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Feature> .
+
+
+
+
+###  Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net
+

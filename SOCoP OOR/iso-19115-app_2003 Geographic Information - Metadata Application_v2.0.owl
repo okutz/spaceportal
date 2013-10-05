@@ -1,0 +1,265 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:iso19115="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115#"
+    xmlns:iso19109="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109#"
+    xmlns="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115-app#"
+    xmlns:iso19115app="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115-app#"
+	xml:base="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115-app">
+  <owl:Ontology rdf:about="">
+      <owl:versionInfo>version 2.0</owl:versionInfo>
+    <rdfs:comment xml:lang="en">title- An ontology for Geographic Information - Metadata Application  (ISO 19115:2003). creator- Akm Saiful Islam and Michael Piasecki. description- Ontology for ISO 19115:2003 Metadata Application , vocabulary terms are declared using OWL language to support RDF applications. publisher- Drexel University. date- 2004-08-27. format - text/xml. language - English	</rdfs:comment>
+    <owl:imports rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115"/>
+    <owl:imports rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="DS_StereoMate">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DS_OtherAggregate"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DS_Aggregate">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#composedOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#superset"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#seriesMetadata"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#subset"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DS_OtherAggregate">
+    <rdfs:subClassOf rdf:resource="#DS_Aggregate"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DS_Sensor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DS_Series"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DS_ProductionSeries">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DS_Series"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DS_Series">
+    <rdfs:subClassOf rdf:resource="#DS_Aggregate"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DS_DataSet">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#has"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#partOf"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DS_Platform">
+    <rdfs:subClassOf rdf:resource="#DS_Series"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DS_Initiative">
+    <rdfs:subClassOf rdf:resource="#DS_Aggregate"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="propertyType">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#propertyTypeMetadata"/>
+    </owl:inverseOf>
+    <rdfs:domain>
+      <rdf:Description rdf:about="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115#MD_Metadata">
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >0</owl:minCardinality>
+            <owl:onProperty rdf:resource="#propertyType"/>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#featureAttribute"/>
+            </owl:onProperty>
+            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >0</owl:minCardinality>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#describes"/>
+            </owl:onProperty>
+            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >0</owl:minCardinality>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#featureType"/>
+            </owl:onProperty>
+            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >0</owl:minCardinality>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#series"/>
+            </owl:onProperty>
+            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >0</owl:minCardinality>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+      </rdf:Description>
+    </rdfs:domain>
+    <rdfs:range>
+      <rdf:Description rdf:about="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109#GF_PropertyType">
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >0</owl:minCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#propertyTypeMetadata"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+      </rdf:Description>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="describes">
+    <rdfs:range rdf:resource="#DS_DataSet"/>
+    <rdfs:domain rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115#MD_Metadata"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#has"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="featureType">
+    <rdfs:domain rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115#MD_Metadata"/>
+    <rdfs:range>
+      <rdf:Description rdf:about="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109#GF_FeatureType">
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#featureTypeMetadata"/>
+            </owl:onProperty>
+            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >0</owl:minCardinality>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >0</owl:minCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#featureAttributeMetadata"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+      </rdf:Description>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="featureAttribute">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#featureAttributeMetadata"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115#MD_Metadata"/>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109#GF_AttributeType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="subset">
+    <owl:inverseOf>
+      <owl:SymmetricProperty rdf:about="#superset"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#DS_Aggregate"/>
+    <rdfs:range rdf:resource="#DS_Aggregate"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="featureTypeMetadata">
+    <rdfs:domain rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109#GF_FeatureType"/>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115#MD_Metadata"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has">
+    <owl:inverseOf rdf:resource="#describes"/>
+    <rdfs:domain rdf:resource="#DS_DataSet"/>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115#MD_Metadata"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="seriesMetadata">
+    <rdfs:domain rdf:resource="#DS_Aggregate"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#series"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115#MD_Metadata"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="series">
+    <owl:inverseOf rdf:resource="#seriesMetadata"/>
+    <rdfs:domain rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115#MD_Metadata"/>
+    <rdfs:range rdf:resource="#DS_Aggregate"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="featureAttributeMetadata">
+    <rdfs:domain rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109#GF_FeatureType"/>
+    <owl:inverseOf rdf:resource="#featureAttribute"/>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115#MD_Metadata"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="partOf">
+    <rdfs:range rdf:resource="#DS_Aggregate"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#composedOf"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#DS_DataSet"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="propertyTypeMetadata">
+    <owl:inverseOf rdf:resource="#propertyType"/>
+    <rdfs:domain rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109#GF_PropertyType"/>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19115#MD_Metadata"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="composedOf">
+    <owl:inverseOf rdf:resource="#partOf"/>
+    <rdfs:domain rdf:resource="#DS_Aggregate"/>
+    <rdfs:range rdf:resource="#DS_DataSet"/>
+  </owl:ObjectProperty>
+  <owl:SymmetricProperty rdf:ID="superset">
+    <rdfs:range rdf:resource="#DS_Aggregate"/>
+    <owl:inverseOf rdf:resource="#subset"/>
+    <rdfs:domain rdf:resource="#DS_Aggregate"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:SymmetricProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 1.2 beta, Build 139)  http://protege.stanford.edu -->

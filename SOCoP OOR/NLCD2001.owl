@@ -1,0 +1,385 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY Ontology1347296135718 "http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:Ontology1347296135718="http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#Agricultural -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;Agricultural">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#Barren -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;Barren">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#BarrenLand -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;BarrenLand">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;Barren"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;CultivatedCrops"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DeciduousForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedHighIntensity"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedLowIntensity"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedMediumIntensity"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedOpenSpace"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EmergentHerbaceousWetlands"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EvergreenForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;GrasslandHerbaceousLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;MixedForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;OpenWater"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PastureHay"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PerennialIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Barren areas of bedrock, desert pavement, scarps, talus, slides, volcanic material, glacial debris, sand dunes, strip mines, gravel pits and other accumulations of earthen material. Generally, vegetation accounts for less than 15% of total cover.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#CultivatedCrops -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;CultivatedCrops">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;Agricultural"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DeciduousForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedHighIntensity"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedLowIntensity"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedMediumIntensity"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedOpenSpace"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EmergentHerbaceousWetlands"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EvergreenForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;GrasslandHerbaceousLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;MixedForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;OpenWater"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PastureHay"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PerennialIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas used for the production of annual crops, such as corn, soybeans, vegetables, tobacco, and cotton, and also perennial woody crops such as orchards and vineyards. Crop vegetation accounts for greater than 20 percent of total vegetation. This class also includes all land being actively tilled. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#DeciduousForest -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;DeciduousForest">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;Forest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedHighIntensity"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedLowIntensity"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedMediumIntensity"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedOpenSpace"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EmergentHerbaceousWetlands"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EvergreenForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;GrasslandHerbaceousLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;MixedForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;OpenWater"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PastureHay"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PerennialIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas dominated by trees generally greater than 5 meters tall, and greater than 20% of total vegetation cover. More than 75 percent of the tree species shed foliage simultaneously in response to seasonal change.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#Developed -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;Developed"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#DevelopedHighIntensity -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;DevelopedHighIntensity">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;Developed"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedLowIntensity"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedMediumIntensity"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedOpenSpace"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EmergentHerbaceousWetlands"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EvergreenForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;GrasslandHerbaceousLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;MixedForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;OpenWater"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PastureHay"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PerennialIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Includes highly developed areas where people reside or work in high numbers. Examples include apartment complexes, row houses and commercial/industrial. Impervious surfaces account for 80 to100 percent of the total cover. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#DevelopedLowIntensity -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;DevelopedLowIntensity">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;Developed"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedMediumIntensity"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedOpenSpace"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EmergentHerbaceousWetlands"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EvergreenForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;GrasslandHerbaceousLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;MixedForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;OpenWater"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PastureHay"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PerennialIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Includes areas with a mixture of constructed materials and vegetation. Impervious surfaces account for 20-49 percent of total cover. These areas most commonly include single-family housing units. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#DevelopedMediumIntensity -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;DevelopedMediumIntensity">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;Developed"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;DevelopedOpenSpace"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EmergentHerbaceousWetlands"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EvergreenForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;GrasslandHerbaceousLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;MixedForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;OpenWater"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PastureHay"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PerennialIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Includes areas with a mixture of constructed materials and vegetation. Impervious surfaces account for 50-79 percent of the total cover. These areas most commonly include single-family housing units.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#DevelopedOpenSpace -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;DevelopedOpenSpace">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;Developed"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EmergentHerbaceousWetlands"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EvergreenForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;GrasslandHerbaceousLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;MixedForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;OpenWater"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PastureHay"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PerennialIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Includes areas with a mixture of some constructed materials, but mostly vegetation in the form of lawn grasses. Impervious surfaces account for less than 20 percent of total cover. These areas most commonly include large-lot single-family housing units, parks, golf courses, and vegetation planted in developed settings for recreation, erosion control, or aesthetic purposes.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#EmergentHerbaceousWetlands -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;EmergentHerbaceousWetlands">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;Wetlands"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;EvergreenForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;GrasslandHerbaceousLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;MixedForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;OpenWater"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PastureHay"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PerennialIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas where perennial herbaceous vegetation accounts for greater than 80 percent of vegetative cover and the soil or substrate is periodically saturated with or covered with water.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#EvergreenForest -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;EvergreenForest">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;Forest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;GrasslandHerbaceousLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;MixedForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;OpenWater"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PastureHay"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PerennialIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas dominated by trees generally greater than 5 meters tall, and greater than 20% of total vegetation cover. More than 75 percent of the tree species maintain their leaves all year. Canopy is never without green foliage.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#Forest -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;Forest">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#GrasslandHerbaceous -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;GrasslandHerbaceous">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#GrasslandHerbaceousLand -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;GrasslandHerbaceousLand">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;GrasslandHerbaceous"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;MixedForest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;OpenWater"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PastureHay"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PerennialIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas dominated by grammanoid or herbaceous vegetation, generally greater than 80% of total vegetation. These areas are not subject to intensive management such as tilling, but can be utilized for grazing.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#MixedForest -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;MixedForest">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;Forest"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;OpenWater"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PastureHay"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PerennialIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas dominated by trees generally greater than 5 meters tall, and greater than 20% of total vegetation cover. Neither deciduous nor evergreen species are greater than 75 percent of total tree cover.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#OpenWater -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;OpenWater">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;WaterIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PastureHay"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PerennialIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">All areas of open water, generally with less than 25% cover of vegetation or soil.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#PastureHay -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;PastureHay">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;Agricultural"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;PerennialIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas of grasses, legumes, or grass-legume mixtures planted for livestock grazing or the production of seed or hay crops, typically on a perennial cycle. Pasture/hay vegetation accounts for greater than 20 percent of total vegetation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#PerennialIceSnow -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;PerennialIceSnow">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;WaterIceSnow"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;ShrubScrubLand"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">All areas characterized by a perennial cover of ice and/or snow, generally greater than 25% of total cover. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#ShrubScrub -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;ShrubScrub">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#ShrubScrubLand -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;ShrubScrubLand">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;ShrubScrub"/>
+        <owl:disjointWith rdf:resource="&Ontology1347296135718;WoodyWetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas dominated by shrubs; less than 5 meters tall with shrub canopy typically greater than 20% of total vegetation. This class includes true shrubs, young trees in an early successional stage or trees stunted from environmental conditions.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#WaterIceSnow -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;WaterIceSnow">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#Wetlands -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;Wetlands">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/8/Ontology1347296135718.owl#WoodyWetlands -->
+
+    <owl:Class rdf:about="&Ontology1347296135718;WoodyWetlands">
+        <rdfs:subClassOf rdf:resource="&Ontology1347296135718;Wetlands"/>
+        <rdfs:comment rdf:datatype="&rdfs;Literal">Areas where forest or shrubland vegetation accounts for greater than 20 percent of vegetative cover and the soil or substrate is periodically saturated with or covered with water. </rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

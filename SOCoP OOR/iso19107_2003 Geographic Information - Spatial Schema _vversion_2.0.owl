@@ -1,0 +1,2605 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:iso19103="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#"
+    xmlns:iso19107="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19107#"
+    xmlns:iso19111="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19111#"
+    xmlns="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19107#"
+    xml:base="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19107">
+  <owl:Ontology rdf:about="">
+      <owl:versionInfo>version 2.0</owl:versionInfo>
+    <rdfs:comment xml:lang="en">title- An ontology for Geographic Information - Spatial Schema  (ISO 19107:2003) . creator- Bora Beran, Akm Saiful Islam, Volkan Yargici, Stephane Fellah and Michael Piasecki. description- Ontology for ISO 19107 , vocabulary terms are declared using OWL language to support RDF applications. publisher- Drexel University. date- 2004-08-27.  format - text/xml. language - English	</rdfs:comment>
+	<owl:imports rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103"/> 
+	<owl:imports rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19111"/> 
+  </owl:Ontology>
+  <owl:Class rdf:ID="GM_PointArray">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#column"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_BSplineSurfaceForm"/>
+  <owl:Class rdf:ID="GM_PointRef">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#point"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Boundary">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_Complex"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_TriangulatedSurface">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_PolyhedralSurface"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Surface">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_OrientableSurface"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GM_GenericSurface"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:InverseFunctionalProperty rdf:about="#patch"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_CurveInterpolation"/>
+  <owl:Class rdf:ID="GM_Tin">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#maxLength"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#controlPoint_Tin"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >3</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_TriangulatedSurface"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#breakLines"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#stopLines"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_ArcString">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_CurveSegment"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#controlPoints"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#numArc"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_ComplexBoundary">
+    <rdfs:subClassOf rdf:resource="#GM_Boundary"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Knot"/>
+  <owl:Class rdf:ID="GM_PolynomialSpline">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#vectorAtStart"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#vectorAtEnd"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_SplineCurve"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_GriddedSurface">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#columns"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#controlPoint_GriddedSurface"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_ParametricCurveSurface"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#rows"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_SplineCurveForm"/>
+  <owl:Class rdf:ID="GM_Shell">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_CompositeSurface"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_SurfaceBoundary">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#interior"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#GM_Ring"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:InverseFunctionalProperty rdf:about="#exterior"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:InverseFunctionalProperty rdf:about="#exterior"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#GM_Ring"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:InverseFunctionalProperty rdf:about="#exterior"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#interior"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_PrimitiveBoundary"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Placement"/>
+  <owl:Class rdf:ID="GM_LineSegment">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_LineString"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_ParametricCurveSurface">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#verticalCurveType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#horizontalCurveType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_SurfacePatch"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_MultiCurve">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#length"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_MultiPrimitive"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_MultiPoint">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_MultiPrimitive"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#position_multipoint"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Point">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#DirectPosition"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#position"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#position"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#composite"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#GM_CompositePoint"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_Primitive"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_ArcByBulge">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_ArcStringByBulge"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_MultiSolid">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_MultiPrimitive"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#volume"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#area"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Bezier">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_BSplineCurve"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Position"/>
+  <owl:Class rdf:ID="GM_CubicSpline">
+    <rdfs:subClassOf rdf:resource="#GM_PolynomialSpline"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_BicubicGrid">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#horiVectorAtEnd"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_GriddedSurface"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#horiVectorAtStart"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#vertVectorAtEnd"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#vertVectorAtStart"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_LineString">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#controlPoint"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_CurveSegment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_PrimitiveBoundary">
+    <rdfs:subClassOf rdf:resource="#GM_Boundary"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Sphere">
+    <rdfs:subClassOf rdf:resource="#GM_GriddedSurface"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Bearing">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#direction"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#angle"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#angle"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#direction"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_BSplineSurface">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#isPolynomial"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#degree"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#knot"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#knotSpec"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#degree"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#surfaceForm"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_GriddedSurface"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_BSplineCurve">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#curveForm"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#knotSpec"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#isPolynomial"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#knotSpec"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#curveForm"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_SplineCurve"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_CompositePoint">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#generator"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_Composite"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_Point"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#GM_Point"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#generator"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_MultiPrimitive">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_Aggregate"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_SurfacePatch">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#interpolation_surface"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#numDerivativesOnBoundary"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_GenericSurface"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#surface"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#surface"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#numDerivativesOnBoundary"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_OrientableSurface">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#composite"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#GM_CompositeSurface"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_OrientablePrimitive"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Conic">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#semiLatusRectum"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#endConstrParam"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#startConstrParam"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#eccentricity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#position"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#shifted"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_CurveSegment"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#position"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#GM_AffinePlacement"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Object">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#CRS"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#CRS"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_IndirectPosition">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#indirect"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_Position"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_BilinearGrid">
+    <rdfs:subClassOf rdf:resource="#GM_GriddedSurface"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Geodesic">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_GeodesicString"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_DirectPosition">
+    <rdfs:subClassOf rdf:resource="#GM_Position"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#direct"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_PointGrid">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#row"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_AffinePlacement">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#refDirection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#location"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_Placement"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_PolyhedralSurface">
+    <rdfs:subClassOf rdf:resource="#GM_Surface"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Complex">
+    <rdfs:subClassOf rdf:resource="#GM_Object"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#GM_Primitive"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#element"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#subComplex"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#superComplex"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#element"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Curve">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_OrientableCurve"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:InverseFunctionalProperty rdf:about="#segment"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GM_GenericCurve"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Distance"/>
+  <owl:Class rdf:ID="GM_MultiSurface">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#area"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#perimeter"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_MultiPrimitive"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_OffsetCurve">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#refDirection"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#distance"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#baseCurve"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_CurveSegment"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#refDirection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_CompositeSolid">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#GM_Solid"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#generator"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_Solid"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_Composite"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Primitive">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#proxy"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#composite"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#proxy"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#complex"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#containingPrimitive"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#containedPrimitive"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_Object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DirectPosition">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >3</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#coordinate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#coordinateReferenceSystem"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#coordinateReferenceSystem"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#coordinate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#dimension"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_CompositeCurve">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_Composite"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_OrientableCurve"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#generator"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#GM_OrientableCurve"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Polygon">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#spanningSurface"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#spanningSurface"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#boundary"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_SurfacePatch"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Composite">
+    <rdfs:subClassOf rdf:resource="#GM_Complex"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#generator"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Ring">
+    <rdfs:subClassOf rdf:resource="#GM_CompositeCurve"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_SurfaceInterpolation"/>
+  <owl:Class rdf:ID="GM_Solid">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#GM_CompositeSolid"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#composite"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_Primitive"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_CurveBoundary">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#endPoint"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#startPoint"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_PrimitiveBoundary"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_OrientableCurve">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_OrientablePrimitive"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#composite"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#GM_CompositeCurve"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_CompositeSurface">
+    <rdfs:subClassOf rdf:resource="#GM_OrientableSurface"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#generator"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#GM_OrientableSurface"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_Composite"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Aggregate">
+    <rdfs:subClassOf rdf:resource="#GM_Object"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#element"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Triangle">
+    <rdfs:subClassOf rdf:resource="#GM_Polygon"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Envelope">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#lowerCorner"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#upperCorner"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_SolidBoundary">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:InverseFunctionalProperty rdf:about="#exterior"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_PrimitiveBoundary"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#interior"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:InverseFunctionalProperty rdf:about="#exterior"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#GM_Shell"/>
+        <owl:onProperty>
+          <owl:InverseFunctionalProperty rdf:about="#exterior"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#GM_Shell"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#interior"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_ArcStringByBulge">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_CurveSegment"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#bulge"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#normal"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#numArc"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Clothoid">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#endParameter"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#scaleFactor"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#refLocation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#startParameter"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GM_CurveSegment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Arc">
+    <rdfs:subClassOf rdf:resource="#GM_ArcString"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Circle">
+    <rdfs:subClassOf rdf:resource="#GM_Arc"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_Cone">
+    <rdfs:subClassOf rdf:resource="#GM_GriddedSurface"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_CurveSegment">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#numDerivativeInterior"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#interpolation"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#numDerivativesAtStart"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#numDerivativesAtStart"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#numDerivativesAtEnd"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#curve"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#curve"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#numDerivativesAtEnd"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#numDerivativeInterior"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_GenericCurve"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_GeodesicString">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#controlPoint"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_CurveSegment"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_KnotType"/>
+  <owl:Class rdf:ID="GM_Cylinder">
+    <rdfs:subClassOf rdf:resource="#GM_GriddedSurface"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_SplineCurve">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#knot"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#controlPoints"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#degree"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_CurveSegment"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GM_OrientablePrimitive">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#orientation"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GM_Primitive"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#primitive"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="composite">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#generator"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#GM_Composite"/>
+    <rdfs:domain rdf:resource="#GM_Primitive"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="endPoint">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#GM_Point"/>
+    <rdfs:domain rdf:resource="#GM_CurveBoundary"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="verticalCurveType">
+    <rdfs:range rdf:resource="#GM_CurveInterpolation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="#GM_ParametricCurveSurface"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="stopLines">
+    <rdfs:range rdf:resource="#GM_LineString"/>
+    <rdfs:domain rdf:resource="#GM_Tin"/>
+    <importantNote xml:lang="en">All instances should be unique.</importantNote>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="vectorAtStart">
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Vector"/>
+    <importantNote xml:lang="en">Instances must be ordered. You should use rdf:Seq while creating instances.</importantNote>
+    <rdfs:domain rdf:resource="#GM_PolynomialSpline"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="lowerCorner">
+    <rdfs:range rdf:resource="#DirectPosition"/>
+    <rdfs:domain rdf:resource="#GM_Envelope"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="generator">
+    <owl:inverseOf rdf:resource="#composite"/>
+    <rdfs:range rdf:resource="#GM_Primitive"/>
+    <importantNote xml:lang="en">For GM_OrientableCurve use a sequence. Instances must be ordered. You should use rdf:Seq while creating instances.
+</importantNote>
+    <rdfs:domain rdf:resource="#GM_Composite"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="object">
+    <rdfs:range rdf:resource="#GM_Object"/>
+    <rdfs:domain rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19111#SC_CRS"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="horizontalCurveType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#GM_CurveInterpolation"/>
+    <rdfs:domain rdf:resource="#GM_ParametricCurveSurface"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="horiVectorAtEnd">
+    <rdfs:domain rdf:resource="#GM_BicubicGrid"/>
+    <importantNote xml:lang="en">Instances must be ordered. You should use rdf:Seq while creating instances.</importantNote>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Vector"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="startPoint">
+    <rdfs:range rdf:resource="#GM_Point"/>
+    <rdfs:domain rdf:resource="#GM_CurveBoundary"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="breakLines">
+    <rdfs:domain rdf:resource="#GM_Tin"/>
+    <importantNote xml:lang="en">All instances should be unique.</importantNote>
+    <rdfs:range rdf:resource="#GM_LineString"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="column">
+    <rdfs:range rdf:resource="#GM_Position"/>
+    <rdfs:domain rdf:resource="#GM_PointArray"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="spanningSurface">
+    <rdfs:domain rdf:resource="#GM_Polygon"/>
+    <rdfs:range rdf:resource="#GM_Surface"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="vectorAtEnd">
+    <rdfs:domain rdf:resource="#GM_PolynomialSpline"/>
+    <importantNote xml:lang="en">Instances must be ordered. You should use rdf:Seq while creating instances.</importantNote>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Vector"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="boundary">
+    <rdfs:domain rdf:resource="#GM_Polygon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#GM_SurfaceBoundary"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="row">
+    <rdfs:domain rdf:resource="#GM_PointGrid"/>
+    <rdfs:range rdf:resource="#GM_PointArray"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="vertVectorAtStart">
+    <importantNote xml:lang="en">Instances must be ordered. You should use rdf:Seq while creating instances.</importantNote>
+    <rdfs:domain rdf:resource="#GM_BicubicGrid"/>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Vector"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="coordinateReferenceSystem">
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19111#SC_CRS"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#directPosition"/>
+    </owl:inverseOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="#DirectPosition"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="interpolation">
+    <rdfs:range rdf:resource="#GM_CurveInterpolation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <defaultValue xml:lang="en">linear</defaultValue>
+    <rdfs:domain rdf:resource="#GM_CurveSegment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="element">
+    <rdfs:range rdf:resource="#GM_Object"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#complex"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="location">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#GM_Position"/>
+    <rdfs:domain rdf:resource="#GM_AffinePlacement"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="position_multipoint">
+    <rdfs:domain rdf:resource="#GM_MultiPoint"/>
+    <importantNote xml:lang="en">All instances should be unique.</importantNote>
+    <rdfs:range rdf:resource="#DirectPosition"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="surfaceForm">
+    <rdfs:domain rdf:resource="#GM_BSplineSurface"/>
+    <rdfs:range rdf:resource="#GM_BSplineSurfaceForm"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="perimeter">
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Length"/>
+    <rdfs:domain rdf:resource="#GM_MultiSurface"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="normal">
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Vector"/>
+    <importantNote xml:lang="en">Instances must be ordered. You should use rdf:Seq while creating instances.</importantNote>
+    <rdfs:domain rdf:resource="#GM_ArcStringByBulge"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="directPosition">
+    <owl:inverseOf rdf:resource="#coordinateReferenceSystem"/>
+    <rdfs:domain rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19111#SC_CRS"/>
+    <rdfs:range rdf:resource="#DirectPosition"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="knotSpec">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#GM_KnotType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="knot">
+    <rdfs:range rdf:resource="#GM_Knot"/>
+    <importantNote xml:lang="en">Instances must be ordered. You should use rdf:Seq while creating instances.</importantNote>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="angle">
+    <rdfs:domain rdf:resource="#Bearing"/>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Angle"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="complex">
+    <rdfs:domain rdf:resource="#GM_Primitive"/>
+    <owl:inverseOf rdf:resource="#element"/>
+    <rdfs:range rdf:resource="#GM_Complex"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="controlPoints">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#GM_PointArray"/>
+    <rdfs:domain rdf:resource="#GM_CurveSegment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="CRS">
+    <rdfs:comment xml:lang="en">Coordinate Reference System</rdfs:comment>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19111#SC_CRS"/>
+    <rdfs:domain rdf:resource="#GM_Object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="position">
+    <rdfs:range rdf:resource="#GM_Object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="refLocation">
+    <rdfs:range rdf:resource="#GM_AffinePlacement"/>
+    <rdfs:domain rdf:resource="#GM_GenericCurve"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="containedPrimitive">
+    <rdfs:domain rdf:resource="#GM_Primitive"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:range rdf:resource="#GM_Primitive"/>
+    <owl:inverseOf>
+      <owl:SymmetricProperty rdf:about="#containingPrimitive"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="vertVectorAtEnd">
+    <importantNote xml:lang="en">Instances must be ordered. You should use rdf:Seq while creating instances.</importantNote>
+    <rdfs:domain rdf:resource="#GM_BicubicGrid"/>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Vector"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="interior">
+    <rdfs:range rdf:resource="#GM_Object"/>
+    <rdfs:domain rdf:resource="#GM_Boundary"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="controlPoint_Tin">
+    <rdfs:range rdf:resource="#GM_Position"/>
+    <rdfs:domain rdf:resource="#GM_Tin"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="horiVectorAtStart">
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Vector"/>
+    <rdfs:domain rdf:resource="#GM_BicubicGrid"/>
+    <importantNote xml:lang="en">Instances must be ordered. You should use rdf:Seq while creating instances.</importantNote>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="refDirection">
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Vector"/>
+    <rdfs:domain rdf:resource="#GM_GenericCurve"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="proxy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    <rdfs:range rdf:resource="#GM_OrientablePrimitive"/>
+    <rdfs:domain rdf:resource="#GM_Primitive"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="maxLength">
+    <rdfs:range rdf:resource="#Distance"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="#GM_Tin"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="curve">
+    <rdfs:domain rdf:resource="#GM_CurveSegment"/>
+    <owl:inverseOf>
+      <owl:InverseFunctionalProperty rdf:about="#segment"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#GM_Curve"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="direction">
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Vector"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="#Bearing"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="numDerivativesAtEnd">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <defaultValue xml:lang="en">0</defaultValue>
+    <rdfs:domain rdf:resource="#GM_CurveSegment"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="degree">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="numArc">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="#GM_CurveSegment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:AnnotationProperty rdf:ID="importantNote" />
+  <owl:DatatypeProperty rdf:ID="coordinate">
+    <importantNote xml:lang="en">Instances must be ordered. You should use rdf:Seq while creating instances.</importantNote>
+    <rdfs:domain rdf:resource="#DirectPosition"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="numDerivativeInterior">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <defaultValue xml:lang="en">0</defaultValue>
+    <rdfs:domain rdf:resource="#GM_CurveSegment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="isPolynomial">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="shifted">
+    <rdfs:domain rdf:resource="#GM_Conic"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="scaleFactor">
+    <rdfs:domain rdf:resource="#GM_Clothoid"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="weight">
+    <rdfs:domain rdf:resource="#GM_Knot"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="endParameter">
+    <rdfs:domain rdf:resource="#GM_Clothoid"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="endConstrParam">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:domain rdf:resource="#GM_Conic"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="bulge">
+    <importantNote xml:lang="en">Instances must be ordered. You should use rdf:Seq while creating instances.</importantNote>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:domain rdf:resource="#GM_ArcStringByBulge"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="rows">
+    <rdfs:domain rdf:resource="#GM_GriddedSurface"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="eccentricity">
+    <rdfs:domain rdf:resource="#GM_Conic"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="startConstrParam">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:domain rdf:resource="#GM_Conic"/>
+  </owl:DatatypeProperty>
+  <owl:SymmetricProperty rdf:ID="containingPrimitive">
+    <owl:inverseOf rdf:resource="#containedPrimitive"/>
+    <rdfs:domain rdf:resource="#GM_Primitive"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#GM_Primitive"/>
+  </owl:SymmetricProperty>
+  <owl:FunctionalProperty rdf:ID="controlPoint">
+    <rdfs:range rdf:resource="#GM_PointArray"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#GM_CurveSegment"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="baseCurve">
+    <rdfs:domain rdf:resource="#GM_OffsetCurve"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#GM_CurveSegment"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="volume">
+    <rdfs:domain rdf:resource="#GM_MultiSolid"/>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Volume"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="upperCorner">
+    <rdfs:domain rdf:resource="#GM_Envelope"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#DirectPosition"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="numDerivativesAtStart">
+    <defaultValue xml:lang="en">0</defaultValue>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#GM_CurveSegment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="area">
+    <rdfs:domain rdf:resource="#GM_Object"/>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Area"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="superComplex">
+    <rdfs:domain rdf:resource="#GM_Complex"/>
+    <rdfs:range rdf:resource="#GM_Complex"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:about="#subComplex"/>
+    </owl:inverseOf>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="columns">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="#GM_GriddedSurface"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="semiLatusRectum">
+    <rdfs:domain rdf:resource="#GM_Conic"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="primitive">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#GM_OrientablePrimitive"/>
+    <rdfs:range rdf:resource="#GM_Primitive"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="numDerivativesOnBoundary">
+    <rdfs:domain rdf:resource="#GM_SurfacePatch"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <defaultValue xml:lang="en">0</defaultValue>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="surface">
+    <rdfs:domain rdf:resource="#GM_SurfacePatch"/>
+    <owl:inverseOf>
+      <owl:InverseFunctionalProperty rdf:about="#patch"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#GM_Surface"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="multiplicity">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="#GM_Knot"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="point">
+    <rdfs:range rdf:resource="#GM_Point"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    <rdfs:domain rdf:resource="#GM_PointRef"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="startParameter">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:domain rdf:resource="#GM_Clothoid"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="curveForm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#GM_SplineCurveForm"/>
+    <rdfs:domain rdf:resource="#GM_BSplineCurve"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="length">
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Length"/>
+    <rdfs:domain rdf:resource="#GM_MultiCurve"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="subComplex">
+    <owl:inverseOf rdf:resource="#superComplex"/>
+    <rdfs:domain rdf:resource="#GM_Complex"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:range rdf:resource="#GM_Complex"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="value">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:domain rdf:resource="#GM_Knot"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="orientation">
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Sign"/>
+    <rdfs:domain rdf:resource="#GM_OrientablePrimitive"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="distance">
+    <rdfs:domain rdf:resource="#GM_OffsetCurve"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#Length"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="dimension">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="#DirectPosition"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="controlPoint_GriddedSurface">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#GM_PointGrid"/>
+    <rdfs:domain rdf:resource="#GM_GriddedSurface"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="direct">
+    <rdfs:range rdf:resource="#DirectPosition"/>
+    <rdfs:domain rdf:resource="#GM_DirectPosition"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="indirect">
+    <rdfs:range rdf:resource="#GM_PointRef"/>
+    <rdfs:domain rdf:resource="#GM_IndirectPosition"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="interpolation_surface">
+    <rdfs:domain rdf:resource="#GM_SurfacePatch"/>
+    <defaultValue xml:lang="en">planar</defaultValue>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#GM_SurfaceInterpolation"/>
+  </owl:FunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="exterior">
+    <rdfs:range rdf:resource="#GM_Object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="#GM_Boundary"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="patch">
+    <rdfs:range rdf:resource="#GM_SurfacePatch"/>
+    <owl:inverseOf rdf:resource="#surface"/>
+    <rdfs:domain rdf:resource="#GM_Surface"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:ID="segment">
+    <rdfs:domain rdf:resource="#GM_Curve"/>
+    <owl:inverseOf rdf:resource="#curve"/>
+    <rdfs:range rdf:resource="#GM_CurveSegment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:InverseFunctionalProperty>
+  <GM_SplineCurveForm rdf:ID="parabolicArc"/>
+  <GM_BSplineSurfaceForm rdf:ID="_spherical"/>
+  <GM_BSplineSurfaceForm rdf:ID="conical"/>
+  <GM_CurveInterpolation rdf:ID="polynomialSpline"/>
+  <GM_SurfaceInterpolation rdf:ID="_rationalSpline"/>
+  <GM_KnotType rdf:ID="piecewiseBezier"/>
+  <GM_CurveInterpolation rdf:ID="rationalSpline"/>
+  <GM_BSplineSurfaceForm rdf:ID="cylindrical"/>
+  <GM_SurfaceInterpolation rdf:ID="spherical"/>
+  <GM_SurfaceInterpolation rdf:ID="_conic"/>
+  <GM_SurfaceInterpolation rdf:ID="planar"/>
+  <GM_CurveInterpolation rdf:ID="circularArc3Points"/>
+  <GM_SurfaceInterpolation rdf:ID="none"/>
+  <GM_SurfaceInterpolation rdf:ID="triangulatedSpline"/>
+  <GM_SurfaceInterpolation rdf:ID="tin"/>
+  <GM_BSplineSurfaceForm rdf:ID="toroidal"/>
+  <GM_CurveInterpolation rdf:ID="elliptical"/>
+  <GM_SplineCurveForm rdf:ID="polylineForm"/>
+  <GM_SurfaceInterpolation rdf:ID="parametricCurve"/>
+  <GM_SplineCurveForm rdf:ID="circularArc"/>
+  <owl:AnnotationProperty rdf:ID="defaultValue" />
+  <GM_KnotType rdf:ID="quasiUniform"/>
+  <GM_CurveInterpolation rdf:ID="circularArc2PointWithBulge"/>
+  <GM_CurveInterpolation rdf:ID="cubicSpline"/>
+  <GM_CurveInterpolation rdf:ID="linear"/>
+  <GM_SurfaceInterpolation rdf:ID="_elliptical"/>
+  <GM_SplineCurveForm rdf:ID="ellipticArc"/>
+  <GM_CurveInterpolation rdf:ID="geodesic"/>
+  <GM_SurfaceInterpolation rdf:ID="_polynomialSpline"/>
+  <GM_KnotType rdf:ID="uniform"/>
+  <GM_BSplineSurfaceForm rdf:ID="_planar"/>
+  <GM_SplineCurveForm rdf:ID="hyperbolicArc"/>
+  <GM_CurveInterpolation rdf:ID="conic"/>
+  <GM_BSplineSurfaceForm rdf:ID="unspecified"/>
+  <GM_CurveInterpolation rdf:ID="clothoid"/>
+    <owl:Class rdf:ID="TP_Ring">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TP_Expression"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_FaceBoundary">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_exterior"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#TP_Ring"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_interior"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#TP_Ring"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_exterior"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TP_PrimitiveBoundary"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_SolidBoundary">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_exterior"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_exterior"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TP_Shell"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_interior"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TP_Shell"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TP_PrimitiveBoundary"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_ComplexBoundary">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TP_Boundary"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_DirectedSolid">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TP_DirectedTopo"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TP_Solid"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topo"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topo"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_Solid">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TP_Primitive"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#TP_DirectedSolid"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_proxy"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_boundary"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_boundary"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TP_DirectedFace"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TP_DirectedSolid"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_proxy"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_EdgeBoundary">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#startNode"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#endNode"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TP_PrimitiveBoundary"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_DirectedEdge">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TP_Edge"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topo"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_primitive"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TP_Face"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topo"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TP_DirectedTopo"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_DirectedNode">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_primitive"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TP_Edge"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TP_Node"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topo"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TP_DirectedTopo"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topo"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_DirectedTopo">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topo"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TP_Primitive"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topo"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_Node">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_proxy"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_proxy"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#TP_DirectedNode"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TP_DirectedNode"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#spoke"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#TP_DirectedEdge"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TP_Primitive"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_Primitive">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_proxy"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#TP_DirectedTopo"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_proxy"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_complex"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#container"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#maximalComplex"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TP_Object"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#geometry"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_DirectedFace">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topo"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_primitive"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topo"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TP_Face"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_primitive"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TP_DirectedTopo"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_primitive"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#TP_Solid"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_Boundary">
+    <rdfs:subClassOf rdf:resource="#TP_Expression"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_Shell">
+    <rdfs:subClassOf rdf:resource="#TP_Expression"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_Complex">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_element"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TP_Object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_PrimitiveBoundary">
+    <rdfs:subClassOf rdf:resource="#TP_Boundary"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_Edge">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#spoke"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#TP_DirectedFace"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TP_Primitive"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_proxy"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#TP_DirectedEdge"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_proxy"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#TP_DirectedNode"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_boundary"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_boundary"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TP_DirectedEdge"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TP_Face">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#spoke"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#TP_DirectedSolid"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TP_DirectedFace"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#spoke"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_proxy"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#spoke"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#TP_DirectedFace"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_proxy"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TP_Primitive"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_boundary"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#_boundary"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#TP_DirectedEdge"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="container">
+    <rdfs:domain rdf:resource="#TP_Primitive"/>
+    <rdfs:range rdf:resource="#TP_Primitive"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="_element">
+    <rdfs:range rdf:resource="#TP_Primitive"/>
+    <rdfs:domain rdf:resource="#TP_Complex"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="startNode">
+    <rdfs:range rdf:resource="#TP_DirectedNode"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="_boundary">
+    <rdfs:range rdf:resource="#TP_DirectedTopo"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#_primitive"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="geometry">
+    <rdfs:domain rdf:resource="#TP_Primitive"/>
+    <rdfs:range rdf:resource="#GM_Primitive"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="topology">
+    <rdfs:range rdf:resource="#TP_Primitive"/>
+    <rdfs:domain rdf:resource="#GM_Primitive"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="_exterior">
+    <rdfs:range rdf:resource="#TP_Expression"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="maximalComplex">
+    <rdfs:domain rdf:resource="#TP_Primitive"/>
+    <rdfs:range rdf:resource="#TP_Complex"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hub">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#spoke"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#TP_Primitive"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="topo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#_proxy"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#TP_Primitive"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isolated">
+    <rdfs:domain rdf:resource="#TP_Primitive"/>
+    <rdfs:range rdf:resource="#TP_Primitive"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="endNode">
+    <rdfs:range rdf:resource="#TP_DirectedNode"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="_proxy">
+    <rdfs:range rdf:resource="#TP_DirectedTopo"/>
+    <owl:inverseOf rdf:resource="#topo"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="spoke">
+    <rdfs:range rdf:resource="#TP_DirectedTopo"/>
+    <owl:inverseOf rdf:resource="#hub"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="_primitive">
+    <owl:inverseOf rdf:resource="#_boundary"/>
+    <rdfs:range rdf:resource="#TP_Primitive"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="_complex">
+    <rdfs:range rdf:resource="#TP_Complex"/>
+    <rdfs:domain rdf:resource="#TP_Primitive"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="_interior">
+    <rdfs:range rdf:resource="#TP_Expression"/>
+  </owl:ObjectProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 1.1 beta, Build 129)  http://protege.stanford.edu -->

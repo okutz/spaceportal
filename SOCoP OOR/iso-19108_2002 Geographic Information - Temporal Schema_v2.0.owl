@@ -1,0 +1,748 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:iso19112="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19112#"
+    xmlns:iso19109="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:iso19103="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103#"
+    xmlns:iso19107="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19107#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:iso19108="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19108#"
+    xmlns="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19108#"
+	xml:base="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19108">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109"/>
+    <owl:imports rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19112"/>
+	<owl:imports rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19103"/>
+	<owl:imports rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19107"/>
+    <owl:versionInfo>version 2.0</owl:versionInfo>
+    <rdfs:comment xml:lang="en">title- An ontology for Geographic Information - Temporal Schema - ISO 19108. creator- Akm Saiful Islam, Bora Beran, Luis Bermudez,  Stephane Fellah and Michael Piasecki. description- Ontology for ISO 19108 , vocabulary terms are declared using OWL language to support RDF applications. publisher- Drexel University. date- 2004-08-27.  format - text/xml. language - English	</rdfs:comment>
+  </owl:Ontology>
+<owl:Class rdf:ID="TM_Order">
+	<rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#relativePosition"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="TM_Separation">
+	<rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#distance"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+	<rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#length"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+	<rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#length"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+	<rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#distance"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="TM_EventType">
+    <rdfs:subClassOf rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109#GF_TemporalAttributeType"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109#GF_TemporalRelationship"/>
+  <owl:Class rdf:ID="TM_Clock">
+    <rdfs:comment xml:lang="en">Provides a basis for defining temporal position within a day</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TM_ReferenceSystem"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="JulianDate">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TM_Coordinate"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">A temporal coordinate system that has its origin at noon on 1 January 4713 BC in the Julian proleptic calendar</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_FeatureDivision">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TM_FeatureSuccession"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_FeatureSuccession">
+    <rdfs:subClassOf rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109#GF_TemporalRelationship"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_OrdinalEra">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#position_ordinal"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#system"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Provides a reference to the ordinal era in which the instant occurs</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#group"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_RelativePosition">
+    <rdfs:comment xml:lang="en">Values for relative positions are provided by this enumerated data type</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <TM_RelativePosition rdf:ID="After"/>
+          <TM_RelativePosition rdf:ID="Before"/>
+          <TM_RelativePosition rdf:ID="Begins"/>
+          <TM_RelativePosition rdf:ID="BegunBy"/>
+          <TM_RelativePosition rdf:ID="Contains"/>
+          <TM_RelativePosition rdf:ID="During"/>
+          <TM_RelativePosition rdf:ID="EndedBy"/>
+          <TM_RelativePosition rdf:ID="Ends"/>
+          <TM_RelativePosition rdf:ID="Equals"/>
+          <TM_RelativePosition rdf:ID="Meets"/>
+          <TM_RelativePosition rdf:ID="MetBy"/>
+          <TM_RelativePosition rdf:ID="OverlappedBy"/>
+          <TM_RelativePosition rdf:ID="Overlaps"/>
+        </owl:oneOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_FeatureSubstitution">
+    <rdfs:subClassOf rdf:resource="#TM_FeatureSuccession"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_Position">
+    <rdfs:comment xml:lang="en">A union class that consists of one of the data types listed as its attributes</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_Edge">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#geometry_edge"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">One-dimensional topological primitive in time</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#start"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TM_TopologicalPrimitive"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#geometry_edge"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#end_"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_TopologicalPrimitive">
+    <rdfs:comment xml:lang="en">Represents a single non-decomposable element of topology and its relationships to other topological primitives within a topological complex</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TM_Primitive"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#complex"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_CalDate">
+    <rdfs:comment xml:lang="en">Adata type that shall be used to identify temporal position within a calendar</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TM_TemporalPosition"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_GeometricPrimitive">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TM_Primitive"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Provides information about temporal position</rdfs:comment>
+	<rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasTM_Separation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_Coordinate">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TM_TemporalPosition"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">A data type that shall be used for identifying temporal position within a temporal coordinate system</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_Primitive">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TM_Object"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Represents a non-decomposed element of geometry or topology of time</rdfs:comment>
+	<rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasTM_Order"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_Position_Time8601">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#time8601"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TM_Position"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_SimpleRelationship">
+    <rdfs:subClassOf rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109#GF_TemporalRelationship"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_TemporalPosition">
+    <rdfs:comment xml:lang="en">Used for describing temporal positions referenced to other temporal reference systems</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#frame"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_OrdinalReferenceSystem">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#component"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Used when the order of events in time can be well established, but the magnitude
+of the intervals between them can not be accurately determined</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TM_ReferenceSystem"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_Calendar">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#timeBasis"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TM_ReferenceSystem"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#referenceFrame"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#timeBasis"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">A discrete temporal reference system that provides a basis for defining temporal position to a resolution of one day</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_ReferenceSystem">
+    <rdfs:subClassOf rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19112#RS_ReferenceSystem"/>
+    <rdfs:comment xml:lang="en">Information about a temporal reference system</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_Instant">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topology_instant"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topology_instant"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TM_GeometricPrimitive"/>
+    <rdfs:comment xml:lang="en">A zero-dimensional geometric primitive that represents position in time</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_StateType">
+    <rdfs:subClassOf rdf:resource="http://loki.cae.drexel.edu/~wbs/ontology/2004/09/iso-19109#GF_TemporalAttributeType"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_Complex">
+    <rdfs:subClassOf rdf:resource="#TM_Object"/>
+    <rdfs:comment xml:lang="en">An aggregation of TM_Primitives</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_CoordinateSystem">
+    <rdfs:comment xml:lang="en">A temporal coordinate system to simplify  the computation of temporal distances
+between points and the functional description of temporal operations</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#TM_ReferenceSystem"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_Position_AnyOther">
+    <rdfs:subClassOf rdf:resource="#TM_Position"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#anyOther"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_Position_DateTime8601">
+    <rdfs:subClassOf rdf:resource="#TM_Position"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#dateTime8601"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_Node">
+    <rdfs:subClassOf rdf:resource="#TM_TopologicalPrimitive"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#geometry_node"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#geometry_node"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">A zero dimensional topological primitive in time</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_TopologicalComplex">
+    <rdfs:comment xml:lang="en">A set of connected topological primitives</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#TM_Complex"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#primitive"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EX_Extent">
+    <rdfs:comment xml:lang="en">Identifies the space and time within which the TM_ReferenceSystem is applicable</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_CalendarEra">
+    <rdfs:comment xml:lang="en">Characteristics of each calendar era</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#datingSystem"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_Period">
+    <rdfs:subClassOf rdf:resource="#TM_GeometricPrimitive"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#ending"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#beginning"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topology_period"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">A one-dimensional geometric primitive that represents extent in time</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#topology_period"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_OrdinalPosition">
+    <rdfs:subClassOf rdf:resource="#TM_TemporalPosition"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#value"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">A data type that shall be used for identifying temporal position within an ordinal temporal reference system</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_ClockTime">
+    <rdfs:subClassOf rdf:resource="#TM_TemporalPosition"/>
+    <rdfs:comment xml:lang="en">A data type that shall be used to identify a temporal position within a day</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_IndeterminateValue">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <TM_IndeterminateValue rdf:ID="unknown"/>
+          <TM_IndeterminateValue rdf:ID="now"/>
+          <TM_IndeterminateValue rdf:ID="before"/>
+          <TM_IndeterminateValue rdf:ID="after"/>
+        </owl:oneOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Unknown value</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_Position_Date8601">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#date8601"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TM_Position"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_FeatureFusion">
+    <rdfs:subClassOf rdf:resource="#TM_FeatureSuccession"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TM_DateAndTime">
+    <rdfs:subClassOf rdf:resource="#TM_ClockTime"/>
+    <rdfs:subClassOf rdf:resource="#TM_CalDate"/>
+    <rdfs:comment xml:lang="en">Provides a single data type for identifying a temporal position with a resolution of less than a day</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Multiplicity"/>
+  <owl:ObjectProperty rdf:ID="referenceFrame">
+    <rdfs:domain rdf:resource="#TM_Calendar"/>
+    <rdfs:range rdf:resource="#TM_CalendarEra"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="nextEdge">
+    <rdfs:range rdf:resource="#TM_Edge"/>
+    <rdfs:domain rdf:resource="#TM_Node"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="timeBasis">
+    <rdfs:range rdf:resource="#TM_Clock"/>
+    <rdfs:domain rdf:resource="#TM_Calendar"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="topology_period">
+    <rdfs:range rdf:resource="#TM_Edge"/>
+    <rdfs:domain rdf:resource="#TM_Period"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="topology_instant">
+    <rdfs:range rdf:resource="#TM_Node"/>
+    <rdfs:domain rdf:resource="#TM_Instant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="beginning">
+    <rdfs:domain rdf:resource="#TM_Period"/>
+    <rdfs:range rdf:resource="#TM_Instant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="position">
+    <rdfs:domain rdf:resource="#TM_Instant"/>
+    <rdfs:range rdf:resource="#TM_Position"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="geometry_edge">
+    <rdfs:range rdf:resource="#TM_Period"/>
+    <rdfs:domain rdf:resource="#TM_Edge"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="referenceTime">
+    <rdfs:domain rdf:resource="#TM_Clock"/>
+    <rdfs:range rdf:resource="#TM_ClockTime"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="complex">
+    <rdfs:domain rdf:resource="#TM_TopologicalPrimitive"/>
+    <rdfs:range rdf:resource="#TM_TopologicalComplex"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="julianReference">
+    <rdfs:range rdf:resource="#JulianDate"/>
+    <rdfs:domain rdf:resource="#TM_CalendarEra"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="position_ordinal">
+    <rdfs:domain rdf:resource="#TM_OrdinalEra"/>
+    <rdfs:range rdf:resource="#TM_OrdinalPosition"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="value">
+    <rdfs:domain rdf:resource="#TM_OrdinalPosition"/>
+    <rdfs:range rdf:resource="#TM_OrdinalEra"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="geometry_node">
+    <rdfs:domain rdf:resource="#TM_Node"/>
+    <rdfs:range rdf:resource="#TM_Instant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="dateBasis">
+    <rdfs:domain rdf:resource="#TM_Clock"/>
+    <rdfs:range rdf:resource="#TM_Calendar"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="datingSystem">
+    <rdfs:domain rdf:resource="#TM_CalendarEra"/>
+    <rdfs:range rdf:resource="#TM_Calendar"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="position_referenceSystem">
+    <rdfs:range rdf:resource="#TM_TemporalPosition"/>
+    <rdfs:domain rdf:resource="#TM_ReferenceSystem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="component">
+    <rdfs:range rdf:resource="#TM_OrdinalEra"/>
+    <rdfs:domain rdf:resource="#TM_OrdinalReferenceSystem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="primitive">
+    <rdfs:domain rdf:resource="#TM_TopologicalComplex"/>
+    <rdfs:range rdf:resource="#TM_TopologicalPrimitive"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="system">
+    <rdfs:range rdf:resource="#TM_OrdinalReferenceSystem"/>
+    <rdfs:domain rdf:resource="#TM_OrdinalEra"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="endedBy">
+    <rdfs:range rdf:resource="#TM_Period"/>
+    <rdfs:domain rdf:resource="#TM_Instant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="start">
+    <rdfs:range rdf:resource="#TM_Node"/>
+    <rdfs:domain rdf:resource="#TM_Edge"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="previousEdge">
+    <rdfs:domain rdf:resource="#TM_Node"/>
+    <rdfs:range rdf:resource="#TM_Edge"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="epochOfUse">
+    <rdfs:domain rdf:resource="#TM_CalendarEra"/>
+    <rdfs:range rdf:resource="#TM_Period"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="frame">
+    <rdfs:domain rdf:resource="#TM_TemporalPosition"/>
+    <rdfs:range rdf:resource="#TM_ReferenceSystem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="utcReference">
+    <rdfs:range rdf:resource="#TM_ClockTime"/>
+    <rdfs:domain rdf:resource="#TM_Clock"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="anyOther">
+    <rdfs:range rdf:resource="#TM_TemporalPosition"/>
+    <rdfs:domain rdf:resource="#TM_Position_AnyOther"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="begunBy">
+    <rdfs:range rdf:resource="#TM_Period"/>
+    <rdfs:domain rdf:resource="#TM_Instant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="indeterminatePosition">
+    <rdfs:domain rdf:resource="#TM_TemporalPosition"/>
+    <rdfs:range rdf:resource="#TM_IndeterminateValue"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="end_">
+    <rdfs:range rdf:resource="#TM_Node"/>
+    <rdfs:domain rdf:resource="#TM_Edge"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="ending">
+    <rdfs:domain rdf:resource="#TM_Period"/>
+    <rdfs:range rdf:resource="#TM_Instant"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="dateTime8601">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#TM_Position_DateTime8601"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="referenceDate">
+    <rdfs:domain rdf:resource="#TM_CalendarEra"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="coordinateValue">
+    <rdfs:domain rdf:resource="#TM_Coordinate"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="calDate">
+    <rdfs:domain rdf:resource="#TM_CalDate"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="tmDateAndTime">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#TM_DateAndTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="begin">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#TM_OrdinalEra"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="multiplicity">
+    <rdfs:domain rdf:resource="#Multiplicity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="date8601">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:domain rdf:resource="#TM_Position_Date8601"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="calendarEraName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#TM_CalDate"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="time8601">
+    <rdfs:domain rdf:resource="#TM_Position_Time8601"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#time"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="clkTime">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="#TM_ClockTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="interval">
+    <rdfs:domain rdf:resource="#TM_CoordinateSystem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="end">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#TM_OrdinalEra"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="origin">
+    <rdfs:domain rdf:resource="#TM_CoordinateSystem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="referenceEvent">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:SymmetricProperty rdf:ID="member">
+    <rdfs:range rdf:resource="#TM_OrdinalEra"/>
+    <rdfs:domain rdf:resource="#TM_OrdinalEra"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:ID="group">
+    <rdfs:range rdf:resource="#TM_OrdinalEra"/>
+    <rdfs:domain rdf:resource="#TM_OrdinalEra"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:SymmetricProperty>
+  <owl:DatatypeProperty rdf:ID="distance">
+    <rdfs:domain rdf:resource="#TM_Separation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="length">
+    <rdfs:domain rdf:resource="#TM_Separation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
+  </owl:DatatypeProperty>
+   <owl:ObjectProperty rdf:ID="hasTM_Separation">
+    <rdfs:range rdf:resource="#TM_Separation"/>
+    <rdfs:domain rdf:resource="#TM_GeometricPrimitive"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTM_Order">
+    <rdfs:range rdf:resource="#TM_Order"/>
+    <rdfs:domain rdf:resource="#TM_Primitive"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="relativePosition">
+    <rdfs:range rdf:resource="#TM_RelativePosition"/>
+    <rdfs:domain rdf:resource="#TM_Order"/>
+  </owl:ObjectProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 1.2 beta, Build 139)  http://protege.stanford.edu -->

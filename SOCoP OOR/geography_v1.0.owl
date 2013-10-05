@@ -1,0 +1,121 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dbpprop: <http://dbpedia.org/property/> .
+@prefix lingvoj: <http://www.lingvoj.org/ontology#> .
+@prefix gn: <http://www.geonames.org/ontology#> .
+@prefix geographis: <http://www.telegraphis.net/ontology/geography/geography#> .
+@prefix quantity: <http://www.telegraphis.net/ontology/measurement/quantity#> .
+
+<http://www.telegraphis.net/ontology/geography/geography#> a owl:Ontology;
+    dc:title "Geographis Ontology";
+    dc:description """The Geographis Ontology serves as a sort of extension to existing geographic ontologies."""@en;
+    dc:creator <http://www.pipian.com/people/pipian/card#me>.
+
+dc:description a owl:AnnotationProperty.
+dc:creator a owl:AnnotationProperty.
+dc:title a owl:AnnotationProperty.
+
+gn:Country owl:equivalentClass <http://psi.oasis-open.org/iso/3166/#country>.
+<http://psi.oasis-open.org/iso/3166/#country> owl:equivalentClass gn:Country.
+
+gn:Country owl:equivalentClass <http://downlode.org/rdf/iso-3166/schema#Country>.
+<http://downlode.org/rdf/iso-3166/schema#Country> owl:equivalentClass gn:Country.
+
+#geographis:isoShortName a owl:DatatypeProperty;
+#    rdfs:label "ISO short name"@en;
+#    rdfs:domain gn:Country;
+#    rdfs:range rdfs:Literal.
+
+#geographis:currency a owl:ObjectProperty;
+#    rdfs:label "currency"@en;
+#    rdfs:domain gn:Country;
+#    rdfs:range currency:Currency.
+
+geographis:landArea a owl:ObjectProperty;
+    rdfs:label "land area"@en;
+    rdfs:subPropertyOf quantity:area;
+    rdfs:domain gn:Feature;
+    rdfs:range quantity:Area.
+
+geographis:capital a owl:ObjectProperty;
+    rdfs:label "capital"@en;
+    rdfs:domain gn:Feature;
+    rdfs:range geographis:Capital;
+    owl:inverseProperty geographis:capitalOf.
+
+geographis:officialCapital a owl:ObjectProperty;
+    rdfs:label "official capital"@en;
+    rdfs:subPropertyOf geographis:capital.
+
+geographis:defactoCapital a owl:ObjectProperty;
+    rdfs:label "de facto capital"@en;
+    rdfs:subPropertyOf geographis:capital.
+
+geographis:administrativeCapital a owl:ObjectProperty;
+    rdfs:label "administrative capital"@en;
+    rdfs:subPropertyOf geographis:capital.
+
+geographis:judicialCapital a owl:ObjectProperty;
+    rdfs:label "judicial capital"@en;
+    rdfs:subPropertyOf geographis:capital.
+
+geographis:legislativeCapital a owl:ObjectProperty;
+    rdfs:label "legislative capital"@en;
+    rdfs:subPropertyOf geographis:capital.
+
+geographis:onContinent a owl:ObjectProperty;
+    rdfs:label "on continent"@en;
+    rdfs:domain gn:Feature;
+    rdfs:range geographis:Continent.
+
+geographis:language a owl:ObjectProperty;
+    rdfs:label "language"@en;
+    rdfs:range lingvoj:Lingvo.
+
+geographis:officialLanguage a owl:ObjectProperty;
+    rdfs:label "official language"@en;
+    rdfs:subPropertyOf geographis:language.
+
+geographis:defactoLanguage a owl:ObjectProperty;
+    rdfs:label "de facto language"@en;
+    rdfs:subPropertyOf geographis:language.
+
+geographis:isoAlpha2 a owl:DatatypeProperty;
+    rdfs:label "ISO-3166-1 alpha-2 code"@en;
+    rdfs:domain gn:Country;
+    rdfs:range rdfs:Literal;
+    owl:equivalentProperty <http://psi.oasis-open.org/iso/3166/#code-a2>,
+                           <http://downlode.org/rdf/iso-3166/schema#alpha_2>.
+
+<http://psi.oasis-open.org/iso/3166/#code-a2> owl:equivalentProperty geographis:isoAlpha2.
+<http://downlode.org/rdf/iso-3166/schema#alpha_2> owl:equivalentProperty geographis:isoAlpha2.
+
+geographis:isoAlpha3 a owl:DatatypeProperty;
+    rdfs:label "ISO-3166-1 alpha-3 code"@en;
+    rdfs:domain gn:Country;
+    rdfs:range rdfs:Literal;
+    owl:equivalentProperty <http://psi.oasis-open.org/iso/3166/#code-a3>,
+                           <http://downlode.org/rdf/iso-3166/schema#alpha_3>.
+
+<http://psi.oasis-open.org/iso/3166/#code-a3> owl:equivalentProperty geographis:isoAlpha3.
+<http://downlode.org/rdf/iso-3166/schema#alpha_3> owl:equivalentProperty geographis:isoAlpha3.
+
+geographis:isoNumeric a owl:DatatypeProperty;
+    rdfs:label "ISO-3166-1 numeric code"@en;
+    rdfs:domain gn:Country;
+    rdfs:range rdfs:Literal;
+    owl:equivalentProperty <http://psi.oasis-open.org/iso/3166/#code-a3>.
+
+geographis:Continent a owl:Class;
+    rdfs:label "continent"@en;
+    rdfs:subClassOf gn:Feature.
+
+geographis:Capital a owl:Class;
+    rdfs:label "capital"@en;
+    rdfs:subClassOf gn:Feature.
+
+geographis:capitalOf a owl:ObjectProperty;
+    rdfs:label "capital of"@en;
+    rdfs:domain geographis:Capital;
+    owl:inverseProperty geographis:capital.

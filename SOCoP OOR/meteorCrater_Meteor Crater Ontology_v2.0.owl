@@ -1,0 +1,383 @@
+@prefix :        <http://cegis.usgs.gov/Ontology/Instances#>.
+@prefix geo:     <http://www.opengis.net/def/geosparql/>.
+@prefix ogc:     <http://www.opengis.net/>.
+@prefix owl:     <http://www.w3.org/2002/07/owl#>.
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix xml:     <http://www.w3.org/XML/1998/namespace>.
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix usgs:    <http://cegis.usgs.gov/Ontology/>.
+@prefix dbpedia: <http://dbpedia.org/ontology/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix gn:      <http://www.geonames.org/ontology#>.
+@prefix usgsgeo: <http://cegis.usgs.gov.Ontology/geometry/>.
+
+<http://cegis.usgs.gov/Ontology/Instances>
+      rdf:type owl:Ontology.
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+dcterms:description
+      rdf:type owl:AnnotationProperty.
+
+dcterms:identifier
+      rdf:type owl:AnnotationProperty.
+
+geo:asWKT
+      rdf:type owl:AnnotationProperty.
+
+geo:hasGeometry
+      rdf:type owl:AnnotationProperty.
+
+
+
+#################################################################
+#
+#    Data Properties
+#
+#################################################################
+
+usgsgeo:hasUTM
+      rdf:type owl:DatatypeProperty.
+
+dbpedia:MaximumElevation
+      rdf:type owl:DatatypeProperty.
+
+dbpedia:MaximumDepth
+      rdf:type owl:DatatypeProperty.
+
+usgsgeo:hasInnerDiameter
+      rdf:type owl:DatatypeProperty.
+
+dbpedia:MinimumElevation
+      rdf:type owl:DatatypeProperty.
+
+usgsgeo:hasPLSS
+      rdf:type owl:DatatypeProperty.
+
+usgsgeo:hasMBR
+      rdf:type owl:DatatypeProperty.
+
+usgsgeo:hasWidth
+      rdf:type owl:DatatypeProperty.
+
+usgsgeo:hasOuterDiameter
+      rdf:type owl:DatatypeProperty.
+
+usgs:hasElevation
+      rdf:type owl:DatatypeProperty.
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+usgs:hasVerticalControlAccuracy
+      rdf:type owl:ObjectProperty.
+
+usgs:hasHorizontalControlAccuracy
+      rdf:type owl:ObjectProperty.
+
+usgs:hasMonument
+      rdf:type owl:ObjectProperty.
+
+usgs:hasName
+      rdf:type owl:ObjectProperty.
+
+usgs:hasRelationshipToSurface
+      rdf:type owl:ObjectProperty.
+
+usgsgeo:hasShape
+      rdf:type owl:ObjectProperty.
+
+usgs:hasOperationalStatus
+      rdf:type owl:ObjectProperty.
+
+usgs:hasProduct
+      rdf:type owl:ObjectProperty.
+
+gn:nearbyFeatures
+      rdf:type owl:ObjectProperty.
+
+gn:locatedIn
+      rdf:type owl:ObjectProperty.
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+usgs:Building
+      rdf:type owl:Class.
+
+usgs:ControlStation
+      rdf:type owl:Class.
+
+usgs:MeteoricCrater
+      rdf:type owl:Class.
+
+usgs:Road
+      rdf:type owl:Class.
+
+usgs:Well
+      rdf:type owl:Class.
+
+usgs:Quarry
+      rdf:type owl:Class.
+
+geo:Geometry
+      rdf:type owl:Class.
+
+usgs:MineShaft
+      rdf:type owl:Class.
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+:7945
+      rdf:type usgs:MeteoricCrater,
+               owl:NamedIndividual;
+      dcterms:identifier "7945"^^xsd:string;
+      rdfs:comment "A meteor crater"^^xsd:string;
+      dcterms:description "Circular-shaped depression on the surface of the land caused by the impact of a meteorite"^^xsd:string;
+      rdfs:label "Meteor Crater"^^xsd:string;
+      usgs:hasName usgs:CharacterIdentifier;
+      gn:nearbyFeatures :8763,
+                        :5723,
+                        :5123,
+                        :e5706,
+                        :1649,
+                        :1652,
+                        :3876,
+                        :9763,
+                        :1552;
+      geo:hasGeometry :7945geo.
+
+:3876
+      rdf:type usgs:Road,
+                   owl:NamedIndividual;
+      usgs:hasName usgs:CharacterIdentifier;
+      rdfs:label "Crater Road"^^xsd:string;
+      geo:hasGeometry :3876geo.
+
+:8763
+      rdf:type usgs:Building,
+      owl:NamedIndividual;
+      usgs:hasName usgs:CharacterIdentifier;
+      rdfs:label "Meteor Crater Museum"^^xsd:string;
+      geo:hasGeometry :8763geo.
+
+:1649
+      rdf:type usgs:Quarry,
+               owl:NamedIndividual;
+      usgs:hasProduct usgs:Sand;
+      usgs:hasName usgs:unknown;
+      usgs:hasOperationalStatus usgs:unknown;
+      geo:hasGeometry :1649geo.
+
+:1652
+      rdf:type usgs:Quarry,
+               owl:NamedIndividual;
+      usgs:hasProduct usgs:Sand;
+      usgs:hasOperationalStatus usgs:unknown;
+      usgs:hasName usgs:unknown;
+      geo:hasGeometry :1652geo.
+
+:9763
+      rdf:type usgs:Well,
+               owl:NamedIndividual;
+      usgs:hasProduct usgs:water;
+      usgs:hasOperationalStatus usgs:Operational;
+      usgs:hasName usgs:unknown;
+      geo:hasGeometry :9863geo.
+
+:5123
+      rdf:type usgs:ControlStation,
+               owl:NamedIndividual;
+      gn:locatedIn :7945;
+      usgs:hasElevation "5123 ft.";
+      usgs:hasName usgs:CharacterIdentifier;
+      rdfs:label "USGS Benchmark 5123"^^xsd:string;
+      usgs:hasVerticalControlAccuracy usgs:3rdOrderOrBetter;
+      usgs:hasRelationshipToSurface usgs:ExposedAtSurface;
+      usgs:hasMonument usgs:Tablet;
+      geo:hasGeometry :5123geo.
+
+:5723
+      rdf:type usgs:ControlStation,
+               owl:NamedIndividual;
+      usgs:hasElevation "5723 ft.";
+      usgs:hasName usgs:CharacterIdentifier;
+      rdfs:label "USGS Benchamrk BM5723"^^xsd:string;
+      usgs:hasHorizontalControlAccuracy usgs:3rdOrderOrBetter;
+      usgs:hasRelationshipToSurface usgs:ExposedAtSurface;
+      usgs:hasMonument usgs:NoTablet;
+      geo:hasGeometry :5723geo.
+
+:e5706
+      rdf:type usgs:ControlStation,
+               owl:NamedIndividual;
+      usgs:hasElevation "5706 ft.";
+      usgs:hasName usgs:CharacterIdentifier;
+      rdfs:label "USGS Benchmark BM East 5706"^^xsd:string;
+      usgs:hasHorizontalControlAccuracy usgs:3rdOrderOrBetter;
+      usgs:hasRelationshipToSurface usgs:ExposedAtSurface;
+      usgs:hasMonument usgs:NoTablet;
+      geo:hasGeometry :e5706geo.
+
+:1497
+      rdf:type usgs:MineShaft,
+               owl:NamedIndividual;
+      gn:locatedIn :7945;
+      usgs:hasOperationalStatus usgs:Abandoned;
+      usgs:hasName usgs:unknown;
+      geo:hasGeometry :1497geo.
+
+:1523
+      rdf:type usgs:MineShaft,
+               owl:NamedIndividual;
+      gn:locatedIn :7945;
+      usgs:hasOperationalStatus usgs:Abandoned;
+      usgs:hasName usgs:unknown;
+      geo:hasGeometry :1523geo.
+
+:1529
+      rdf:type usgs:MineShaft,
+               owl:NamedIndividual;
+      gn:locatedIn :7945;
+      usgs:hasOperationalStatus usgs:Abandoned;
+      usgs:hasName usgs:unknown;
+      geo:hasGeometry :1529geo.
+
+:1546
+      rdf:type usgs:MineShaft,
+               owl:NamedIndividual;
+      gn:locatedIn :7945;
+      usgs:hasOperationalStatus usgs:Abandoned;
+      usgs:hasName usgs:unknown;
+      geo:hasGeometry :1546geo.
+
+:1552
+      rdf:type usgs:MineShaft,
+               owl:NamedIndividual;
+      usgs:hasOperationalStatus usgs:Abandoned;
+      usgs:hasName usgs:unknown;
+      geo:hasGeometry :1552geo.
+
+:7945geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      usgsgeo:hasWidth "0.2Km";
+      usgsgeo:hasOuterDiameter "1250 m";
+      dbpedia:MinimumElevation "5123 ft.";
+      dbpedia:MaximumElevation "5723 ft.";
+      dbpedia:MaximumDepth "600 ft.";
+      usgsgeo:hasInnerDiameter "833 m";
+      usgsgeo:hasShape usgsgeo:Circular;
+      usgsgeo:hasUTM "E 497959.94m N 3876020.68m Zone12";
+      usgsgeo:hasMBR "Max E 489536.79m Min E 497317.62m Max N 3876632.29m Min N 3875479.58m";
+      usgsgeo:hasPLSS "T 19 N, R 12 1/2 E, Section 13 and 24";
+      geo:asWKT "POINT -111.02236372362403 35.02684835590344".
+
+:1649geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      geo:asWKT "POINT -111.02334 35.02136".
+
+:1652geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      geo:asWKT "POINT -111.02600 35.02056".
+
+:3876geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      geo:asWKT "".
+
+:5123geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      geo:asWKT "POINT -111.02314 35.02808".
+
+
+:5723geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      geo:asWKT "POINT -111.02913 35.02945".
+
+:8763geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      geo:asWKT "POINT -111.02149 35.03270".
+
+:9863geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      geo:asWKT "POINT -111.02328 35.03655".
+
+:e5706geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      geo:asWKT "POINT -111.01656 35.02470".
+
+
+:1497geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      geo:asWKT "POINT (-111.02309 35.02726)".
+
+:1523geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      geo:asWKT "POINT (-111.02271 35.02750)".
+
+:1529geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      geo:asWKT "POINT (-111.02122 35.02787)".
+
+:1546geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      geo:asWKT "POINT (-111.02225 35.02692)".
+
+:1552geo
+      rdf:type geo:Geometry,
+               owl:NamedIndividual;
+      geo:asWKT "POINT (-111.02242 35.01962)".
+
+usgs:3rdOrderOrBetter
+      rdf:type owl:NamedIndividual.
+
+usgs:CharacterIdentifier
+      rdf:type owl:NamedIndividual.
+
+usgs:ExposedAtSurface
+      rdf:type owl:NamedIndividual.
+
+usgs:Tablet
+      rdf:type owl:NamedIndividual.
+
+usgs:Sand
+      rdf:type owl:NamedIndividual.
+
+usgs:Abandoned
+      rdf:type owl:NamedIndividual.
+
+usgs:Water
+      rdf:type owl:NamedIndividual.
+
+usgs:Unknown
+      rdf:type owl:NamedIndividual.
+
+usgs:NoTablet
+      rdf:type owl:NamedIndividual.

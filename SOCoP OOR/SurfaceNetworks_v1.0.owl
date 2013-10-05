@@ -1,0 +1,254 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://purl.org/geovocamp/ontology/SurfaceNetworks#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://purl.org/geovocamp/ontology/SurfaceNetworks> .
+
+<http://purl.org/geovocamp/ontology/SurfaceNetworks> rdf:type owl:Ontology ;
+                                                     
+                                                     rdfs:label "Cayley/Maxwell Surface Theory Ontology"@en ;
+                                                     
+                                                     <http://purl.org/dc/elements/1.1/date> "11/30/2012"@en ;
+                                                     
+                                                     rdfs:seeAlso """Cayley, Arthur. \"XL. On contour and slope lines.\" The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science 18.120 (1859): 264-268. 
+Maxwell, J. Clerk. \"L. On hills and dales.\" (1870): 421-427.
+Warntz, W., 1966. The Topology of a Socio-Economic Terrain and Spatial flows. Papers,
+Regional Science Association, 17, pp. 47-61. """@en ;
+                                                     
+                                                     <http://purl.org/dc/elements/1.1/description> """This ontology was created as a product of the November 2012 Spatial Ontology Community of Practice GeoVoCamp.
+
+The ontology is based on the Cayley/Maxwell theory of surface networks (see Cayley, Arthur. \"XL. On contour and slope lines.\" The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science 18.120 (1859): 264-268., and Maxwell, J. Clerk. \"L. On hills and dales.\" (1870): 421-427.) as applied to topography.  An attempt has been made to to represent those relationships within this model that can be represented in OWL.  """@en ;
+                                                     
+                                                     owl:imports <http://www.w3.org/2001/sw/BestPractices/OEP/SimplePartWhole/part.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#boundedBy
+
+:boundedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#lowerEnd
+
+:lowerEnd rdf:type owl:ObjectProperty ;
+          
+          rdfs:subPropertyOf owl:topObjectProperty .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#upperEnd
+
+:upperEnd rdf:type owl:ObjectProperty .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#surfaceValue
+
+<http://purl.org/geovocamp/ontology/SurfaceNetworks#surfaceValue> rdf:type owl:DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#ContourLine
+
+:ContourLine rdf:type owl:Class ;
+             
+             rdfs:subClassOf owl:Thing .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#CourseLine
+
+:CourseLine rdf:type owl:Class ;
+            
+            rdfs:subClassOf :SlopeLine ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :upperEnd ;
+                              owl:onClass :SaddlePoint ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :lowerEnd ;
+                              owl:onClass :Pit ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                            ] .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#CriticalPoint
+
+:CriticalPoint rdf:type owl:Class ;
+               
+               rdfs:subClassOf owl:Thing ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://www.socop.org/ontologies/SurfaceNetworks#surfaceValue> ;
+                                 owl:someValuesFrom xsd:double
+                               ] .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#Dale
+
+:Dale rdf:type owl:Class ;
+      
+      rdfs:subClassOf :HillOrDale .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#Hill
+
+:Hill rdf:type owl:Class ;
+      
+      rdfs:subClassOf :HillOrDale .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#HillOrDale
+
+:HillOrDale rdf:type owl:Class ;
+            
+            rdfs:subClassOf owl:Thing ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <http://www.w3.org/2001/sw/BestPractices/OEP/SimplePartWhole/part.owl#hasPart_directly> ;
+                              owl:onClass :Territory ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                            ] .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#Pale
+
+:Pale rdf:type owl:Class ;
+      
+      rdfs:subClassOf :SaddlePoint .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#Pass
+
+:Pass rdf:type owl:Class ;
+      
+      rdfs:subClassOf :SaddlePoint .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#Peak
+
+:Peak rdf:type owl:Class ;
+      
+      rdfs:subClassOf :CriticalPoint .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#Pit
+
+:Pit rdf:type owl:Class ;
+     
+     rdfs:subClassOf :CriticalPoint .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#RidgeLine
+
+:RidgeLine rdf:type owl:Class ;
+           
+           rdfs:subClassOf :SlopeLine ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :upperEnd ;
+                             owl:onClass :Peak ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :lowerEnd ;
+                             owl:onClass :SaddlePoint ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                           ] .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#SaddlePoint
+
+:SaddlePoint rdf:type owl:Class ;
+             
+             rdfs:subClassOf :CriticalPoint .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#SlopeLine
+
+:SlopeLine rdf:type owl:Class ;
+           
+           rdfs:subClassOf owl:Thing .
+
+
+
+###  http://purl.org/geovocamp/ontology/SurfaceNetworks#Territory
+
+:Territory rdf:type owl:Class ;
+           
+           rdfs:subClassOf owl:Thing ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty <http://www.w3.org/2001/sw/BestPractices/OEP/SimplePartWhole/part.owl#partOf_directly> ;
+                             owl:onClass :Hill ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty <http://www.w3.org/2001/sw/BestPractices/OEP/SimplePartWhole/part.owl#partOf_directly> ;
+                             owl:onClass :Dale ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :boundedBy ;
+                             owl:onClass :SlopeLine ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                           ] .
+
+
+
+
+###  Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net
+
