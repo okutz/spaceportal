@@ -1,0 +1,674 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#"
+     xml:base="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl">
+        <rdfs:comment rdf:datatype="&xsd;string">This is the SmartBuilding Ontology created for SESAME-S project catering to the use case of a school building located at Kirchdorf, Austria</rdfs:comment>
+        <author rdf:datatype="&xsd;string">Vikash Kumar</author>
+        <owl:versionInfo xml:lang="en">3.0</owl:versionInfo>
+        <homepage>http://sesame-s.ftw.at/</homepage>
+        <owl:versionInfo xml:lang="en">SmartBuilding Ontology</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#author"/>
+    <owl:AnnotationProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#homepage"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#alertFromAppliance -->
+
+    <owl:ObjectProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#alertFromAppliance"/>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#alertFromComputer -->
+
+    <owl:ObjectProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#alertFromComputer">
+        <rdfs:range rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer"/>
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#ComputerAlert"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#alertFromLightDevice -->
+
+    <owl:ObjectProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#alertFromLightDevice">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightAlert"/>
+        <rdfs:range rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightDevice"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#alertFromMeter -->
+
+    <owl:ObjectProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#alertFromMeter">
+        <rdfs:range rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Meter"/>
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#MeterAlert"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#alertFromSensor -->
+
+    <owl:ObjectProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#alertFromSensor">
+        <rdfs:range rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Sensor"/>
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#SensorAlert"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasInstantMeasurement -->
+
+    <owl:ObjectProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasInstantMeasurement">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+        <rdfs:range rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#InstantMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasIntervalMeasurement -->
+
+    <owl:ObjectProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasIntervalMeasurement">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+        <rdfs:range rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#IntervalMeasurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#locatedAt -->
+
+    <owl:ObjectProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#locatedAt">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+        <rdfs:range rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#locationHas -->
+
+    <owl:ObjectProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#locationHas">
+        <rdfs:range rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Location"/>
+        <owl:inverseOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#locatedAt"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#atInstant -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#atInstant">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Alert"/>
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#InstantMeasurement"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#computerIdleSince -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#computerIdleSince">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceState"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#computerIsAlive -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#computerIsAlive">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceState"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasAlertMesage -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasAlertMesage">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#ComputerAlert"/>
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightAlert"/>
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#MeterAlert"/>
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#SensorAlert"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasAlertState -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasAlertState">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Alert"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceControlType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceControlType">
+        <rdfs:comment xml:lang="en">Ranges: Manual/Automatic vs Remotely Controllable Devices</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceFunction -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceFunction">
+        <rdfs:comment xml:lang="en">Examples of the range of this property are Computing, Heating, Lighting, Projector, etc.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDevicePowerSource -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDevicePowerSource">
+        <rdfs:comment xml:lang="en">Ranges: Battery, Electricity</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceSpecifications -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceSpecifications">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceState -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceState">
+        <rdfs:comment xml:lang="en">Ranges: ON/OFF/Idle</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasHostname -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasHostname">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceSpecifications"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasIP -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasIP">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceSpecifications"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasMAC -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasMAC">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceSpecifications"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasMeasurement -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasMeasurement">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#InstantMeasurement"/>
+                    <rdf:Description rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#IntervalMeasurement"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasName">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+                    <rdf:Description rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Location"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasOS -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasOS">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceSpecifications"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#intervalEnds -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#intervalEnds">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#IntervalMeasurement"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#intervalStarts -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#intervalStarts">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#IntervalMeasurement"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#manufacturedBy -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#manufacturedBy">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceSpecifications"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#powerSpecifications -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#powerSpecifications">
+        <rdfs:domain rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#hasDeviceSpecifications"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Actuator -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Actuator">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Appliance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Alert -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Alert"/>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Appliance -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Appliance">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#CoffeeMachine -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#CoffeeMachine">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Appliance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Appliance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#ComputerAlert -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#ComputerAlert">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Alert"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#HumiditySensor -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#HumiditySensor">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#InstantMeasurement -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#InstantMeasurement">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#TemporalMeasurement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#IntervalMeasurement -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#IntervalMeasurement">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#TemporalMeasurement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightAlert -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightAlert">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Alert"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightDevice -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightDevice">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Appliance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightSensor -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightSensor">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Location -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Location">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Meter -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Meter">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#MeterAlert -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#MeterAlert">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Alert"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#PresenceSensor -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#PresenceSensor">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Sensor -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Sensor">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#SensorAlert -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#SensorAlert">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Alert"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#TemperatureSensor -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#TemperatureSensor">
+        <rdfs:subClassOf rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#TemporalMeasurement -->
+
+    <owl:Class rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#TemporalMeasurement">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#App150Instance1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#App150Instance1">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#InstantMeasurement"/>
+        <hasMeasurement rdf:datatype="&xsd;string">10W</hasMeasurement>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Classroom_A1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Classroom_A1">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Location"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer40Alert -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer40Alert">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#ComputerAlert"/>
+        <atInstant rdf:datatype="&xsd;dateTime">2012-03-21T21:32:52Z</atInstant>
+        <hasAlertMesage>The computer is idle for last 40 minutes. Please switch it off.</hasAlertMesage>
+        <alertFromComputer rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#ComputerXYZ"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer60Alert -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer60Alert">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#ComputerAlert"/>
+        <hasAlertMesage>The Computer is idle for last 60 minutes. Please switch it off else it will automatically shut down in 20 minutes.</hasAlertMesage>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer80Alert -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer80Alert">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#ComputerAlert"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#ComputerXYZ -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#ComputerXYZ">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Computer"/>
+        <computerIdleSince rdf:datatype="&xsd;integer">40</computerIdleSince>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LBulbInterval1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LBulbInterval1">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#IntervalMeasurement"/>
+        <intervalStarts rdf:datatype="&xsd;dateTime">2012-02-11T21:32:52Z</intervalStarts>
+        <intervalEnds rdf:datatype="&xsd;dateTime">2012-02-12T21:32:52Z</intervalEnds>
+        <hasMeasurement rdf:datatype="&xsd;string">32W</hasMeasurement>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LSensorInstance1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LSensorInstance1">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#InstantMeasurement"/>
+        <atInstant rdf:datatype="&xsd;dateTime">2012-02-11T21:32:52Z</atInstant>
+        <hasMeasurement rdf:datatype="&xsd;boolean">true</hasMeasurement>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightBulb1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightBulb1">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightDevice"/>
+        <hasName rdf:datatype="&xsd;string">LBulb</hasName>
+        <hasDeviceControlType rdf:datatype="&xsd;string">Remotely Controllable</hasDeviceControlType>
+        <locatedAt rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Classroom_A1"/>
+        <hasIntervalMeasurement rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LBulbInterval1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightOffAlert -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightOffAlert">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightAlert"/>
+        <hasAlertState rdf:datatype="&xsd;boolean">false</hasAlertState>
+        <hasAlertMesage>Please switch off the light in room as there is no one there</hasAlertMesage>
+        <alertFromLightDevice rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightBulb1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#NotAWorkingDayAlert -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#NotAWorkingDayAlert">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightAlert"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#RoomUnoccupiedAlert -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#RoomUnoccupiedAlert">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightAlert"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#SchoolOverAlert -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#SchoolOverAlert">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightAlert"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Sensor_X1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Sensor_X1">
+        <rdf:type rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LightSensor"/>
+        <hasDeviceControlType rdf:datatype="&xsd;string">Automatic</hasDeviceControlType>
+        <hasName rdf:datatype="&xsd;string">LSensor1</hasName>
+        <hasDeviceFunction rdf:datatype="&xsd;string">Light Sensor
+</hasDeviceFunction>
+        <locatedAt rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#Classroom_A1"/>
+        <hasInstantMeasurement rdf:resource="http://www.sesame-s.ftw.at/ontologies/2012/1/SmartBuilding.owl#LSensorInstance1"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
